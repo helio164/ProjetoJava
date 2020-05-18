@@ -12,8 +12,6 @@ public class Main {
 		
 		//já foste
 		//3 tentativa
-		
-		
 		//vou e é agora
 	}
  //marcos 00:08
