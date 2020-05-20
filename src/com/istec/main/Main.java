@@ -7,13 +7,6 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//coco na fralda
 		
-		//já foste
-		//3 tentativa
-		//4 tentativa MM
-		//vou e é agora
 	}
- //marcos 00:08
 }
