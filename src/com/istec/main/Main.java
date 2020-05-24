@@ -12,6 +12,7 @@ import com.istec.objectos.Admin;
 import com.istec.objectos.Engine;
 import com.istec.objectos.Store;
 import com.istec.objectos.StoreType;
+import com.istec.paginas.LoginPage;
 
 public class Main {
 
@@ -24,7 +25,8 @@ public class Main {
 		
 		System.out.println("--- start ---");
 		//Engine.getInstance();
-		
+		LoginPage frame = new LoginPage();
+		frame.setVisible(true);
 		//TestRegister();
 		//TestLoginOK();
 		//TestLoginNOK();

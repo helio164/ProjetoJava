@@ -1,4 +1,4 @@
-package com.istec.main;
+package com.istec.paginas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -8,6 +8,10 @@ import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.istec.componentes.Placeholderpasswordfield;
+import com.istec.componentes.Placeholdertextfield;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
@@ -126,7 +130,7 @@ public class LoginPage extends JFrame {
 		JLabel lblbackgroundimage = new JLabel("");
 		lblbackgroundimage.setBounds(0,0,width,height);
 		//Marcos - não sei alterar o absolutepath para ir buscar o ficheiro que está dentro do projeto
-		lblbackgroundimage.setIcon(new ImageIcon(new ImageIcon("D:\\GitHub\\ProjetoJava\\ProjetoJava\\img\\POS.jpg").getImage().getScaledInstance(lblbackgroundimage.getWidth(), lblbackgroundimage.getHeight(), Image.SCALE_DEFAULT)));
+		lblbackgroundimage.setIcon(new ImageIcon(new ImageIcon("img\\POS.jpg").getImage().getScaledInstance(lblbackgroundimage.getWidth(), lblbackgroundimage.getHeight(), Image.SCALE_DEFAULT)));
 		contentPane.add(lblbackgroundimage, BorderLayout.NORTH);
 		
 		

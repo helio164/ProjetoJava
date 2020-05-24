@@ -36,6 +36,7 @@ public class Engine {
 			System.out.println("File not exists");
 			try {
 				file.createNewFile();
+				stores = new ArrayList<Store>();
 				System.out.println("File Created");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
