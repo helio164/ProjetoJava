@@ -17,6 +17,7 @@ import com.istec.componentes.Placeholderpasswordfield;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class AdminAddProduto extends JFrame {
 
@@ -90,6 +91,7 @@ public class AdminAddProduto extends JFrame {
 		contentPane.add(AdminAddType);
 	
 		JButton Adminbtncancel = new JButton("Cancel");
+		Adminbtncancel.setBackground(new Color(32, 178, 170));
 		Adminbtncancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "carregaste no cancel");
@@ -100,6 +102,7 @@ public class AdminAddProduto extends JFrame {
 		contentPane.add(Adminbtncancel);
 		
 		JButton Adminbtncreate = new JButton("Create");
+		Adminbtncreate.setBackground(new Color(32, 178, 170));
 		Adminbtncreate.setBounds(348, 383, 168, 104);
 		Adminbtncreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -107,5 +110,7 @@ public class AdminAddProduto extends JFrame {
 			}
 		});
 		contentPane.add(Adminbtncreate);
+		
+		this.setVisible(true);
 	}
 }
