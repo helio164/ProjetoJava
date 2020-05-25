@@ -71,7 +71,7 @@ public class AdminMain extends JFrame {
 		JLabel Adminmainlbladduser = new JLabel("New label");	
 		Adminmainlbladduser.setBounds(917, 10, 83, 83);
 		
-		Adminmainlbladduser.setIcon(new ImageIcon(new ImageIcon("D:\\GitHub\\ProjetoJava\\ProjetoJava\\img\\addUser.png").getImage().getScaledInstance(Adminmainlbladduser.getWidth(), Adminmainlbladduser.getHeight(), Image.SCALE_DEFAULT)));
+		Adminmainlbladduser.setIcon(new ImageIcon(new ImageIcon("img\\addUser.png").getImage().getScaledInstance(Adminmainlbladduser.getWidth(), Adminmainlbladduser.getHeight(), Image.SCALE_DEFAULT)));
 		contentPane.add(Adminmainlbladduser);
 		
 		JPanel Adminmainpanelusers = new JPanel();
