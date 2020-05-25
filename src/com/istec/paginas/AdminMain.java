@@ -15,12 +15,15 @@ import com.istec.objectos.Store;
 
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AdminMain extends JFrame {
 
@@ -50,13 +53,25 @@ public class AdminMain extends JFrame {
 		setBounds(100, 100, 1024, 768);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(70, 130, 180));
-		Border border = BorderFactory.createTitledBorder(store.name);
-		contentPane.setBorder(border);
+		//uncomment below
+		//Border border = BorderFactory.createTitledBorder(store.name);
+		//contentPane.setBorder(border);
+		//uncomment above
 		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel Adminmainlbladditem = new JLabel("New label");
+		JLabel Adminmainlbladditem = new JLabel("New label");		
+		Adminmainlbladditem.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//JOptionPane.showMessageDialog(null, "carreguei no cenas");
+				new AdminAddProduto();
+			}
+		});
+		//ir buscar codigo das labels do login
+		
+		
 		Adminmainlbladditem.setBounds(883, 620, 117, 111);
 		Adminmainlbladditem.setIcon(new ImageIcon(new ImageIcon("img\\add.png").getImage().getScaledInstance(Adminmainlbladditem.getWidth(), Adminmainlbladditem.getHeight(), Image.SCALE_DEFAULT)));
 		contentPane.add(Adminmainlbladditem);
@@ -82,9 +97,16 @@ public class AdminMain extends JFrame {
 		Adminmainbtnstats.setBounds(34, 121, 112, 21);
 		contentPane.add(Adminmainbtnstats);
 		
-		JLabel Adminmainlbladduser = new JLabel("New label");	
-		Adminmainlbladduser.setBounds(917, 10, 83, 83);
-		
+		JLabel Adminmainlbladduser = new JLabel("New label");
+		Adminmainlbladduser.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//JOptionPane.showMessageDialog(null, "carreguei no cenas");
+				new AddVendedor();
+				
+			}
+		});		
+		Adminmainlbladduser.setBounds(917, 10, 83, 83);		
 		Adminmainlbladduser.setIcon(new ImageIcon(new ImageIcon("img\\addUser.png").getImage().getScaledInstance(Adminmainlbladduser.getWidth(), Adminmainlbladduser.getHeight(), Image.SCALE_DEFAULT)));
 		contentPane.add(Adminmainlbladduser);
 		

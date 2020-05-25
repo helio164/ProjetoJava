@@ -110,5 +110,7 @@ public class AdminAddProduto extends JFrame {
 			}
 		});
 		contentPane.add(Adminbtncreate);
+		
+		this.setVisible(true);
 	}
 }
