@@ -18,6 +18,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AdminAddProduto extends JFrame {
 
@@ -91,6 +93,12 @@ public class AdminAddProduto extends JFrame {
 		contentPane.add(AdminAddType);
 	
 		JButton Adminbtncancel = new JButton("Cancel");
+		Adminbtncancel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				close();
+			}
+		});
 		Adminbtncancel.setBackground(new Color(32, 178, 170));
 		Adminbtncancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -112,5 +120,9 @@ public class AdminAddProduto extends JFrame {
 		contentPane.add(Adminbtncreate);
 		
 		this.setVisible(true);
+	}
+	
+	public void close(){
+		this.dispose();
 	}
 }
