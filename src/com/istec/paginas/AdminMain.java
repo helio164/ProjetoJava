@@ -1,4 +1,4 @@
-package com.istec.main;
+package com.istec.paginas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
