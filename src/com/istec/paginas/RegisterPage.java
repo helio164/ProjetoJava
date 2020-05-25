@@ -3,8 +3,13 @@ package com.istec.paginas;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -14,6 +19,7 @@ import com.istec.componentes.Placeholdertextfield;
 
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
 
@@ -55,20 +61,20 @@ public class RegisterPage extends JFrame {
 		JPanel Logincontainer = new JPanel();
 		
 		Logincontainer.setBackground(new Color(204,204,204,150));
-		Logincontainer.setBounds(255, 176, 441, 514);
+		Logincontainer.setBounds(254, 164, 441, 514);
 		contentPane.add(Logincontainer);
 		Logincontainer.setLayout(null);
 		
 		
 		Placeholdertextfield CompanyName = new Placeholdertextfield();
-		CompanyName.setBounds(101, 124, 157, 20);
+		CompanyName.setBounds(153, 124, 157, 20);
 		CompanyName.setPlaceholder("Company Name");
 		CompanyName.setOpaque(true);
 		Logincontainer.add(CompanyName);
 		
 		
 		Placeholdertextfield VATNumber = new Placeholdertextfield();
-		VATNumber.setBounds(101, 155, 157, 20);
+		VATNumber.setBounds(153, 155, 157, 20);
 		VATNumber.setPlaceholder("VAT Number");
 		VATNumber.setOpaque(true);
 		Logincontainer.add(VATNumber);
@@ -77,14 +83,14 @@ public class RegisterPage extends JFrame {
 		
 		
 		Placeholdertextfield Username = new Placeholdertextfield();
-		Username.setBounds(101, 186, 157, 20);
+		Username.setBounds(153, 186, 157, 20);
 		Username.setPlaceholder("Username");
 		Username.setOpaque(true);
 		Logincontainer.add(Username);
 				
 		
 		Placeholdertextfield Email = new Placeholdertextfield();
-		Email.setBounds(101, 217, 157, 20);
+		Email.setBounds(153, 217, 157, 20);
 		Email.setPlaceholder("E-mail");
 		Email.setOpaque(true);
 		Logincontainer.add(Email);
@@ -92,7 +98,7 @@ public class RegisterPage extends JFrame {
 		
 		
 		Placeholderpasswordfield Password = new Placeholderpasswordfield();
-		Password.setBounds(101, 258, 157, 19);
+		Password.setBounds(153, 258, 157, 19);
 		Password.setOpaque(true);
 		Password.setPlaceholder("Password");
 		Logincontainer.add(Password);
@@ -100,10 +106,37 @@ public class RegisterPage extends JFrame {
 		
 		
 		Placeholderpasswordfield ConfirmPassword = new Placeholderpasswordfield();
-		ConfirmPassword.setBounds(101, 288, 157, 19);
+		ConfirmPassword.setBounds(153, 288, 157, 19);
 		ConfirmPassword.setOpaque(true);
 		ConfirmPassword.setPlaceholder("Confirm Password");
 		Logincontainer.add(ConfirmPassword);
+		
+		JButton BackAdmin = new JButton("Back");
+		BackAdmin.setBounds(27, 375, 168, 77);
+		Logincontainer.add(BackAdmin);
+		BackAdmin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new LoginPage();
+				close();
+			}
+		});
+		BackAdmin.setBackground(new Color(32, 178, 170));
+		
+		JButton RegisterAdmin = new JButton("Register");
+		RegisterAdmin.setBounds(260, 375, 157, 77);
+		Logincontainer.add(RegisterAdmin);
+		RegisterAdmin.setBackground(new Color(32, 178, 170));
+		RegisterAdmin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "carregaste no Register");
+			}
+		});
+		BackAdmin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "carregaste no Back");
+			}
+		});
 		
 		
 		JLabel lblbackgroundimage = new JLabel("");
@@ -111,4 +144,6 @@ public class RegisterPage extends JFrame {
 		lblbackgroundimage.setIcon(new ImageIcon(new ImageIcon("img\\POS.jpg").getImage().getScaledInstance(lblbackgroundimage.getWidth(), lblbackgroundimage.getHeight(), Image.SCALE_DEFAULT)));
 		contentPane.add(lblbackgroundimage);
 	}
-}
+	public void close(){
+		this.dispose();}
+	}
