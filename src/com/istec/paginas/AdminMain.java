@@ -1,4 +1,4 @@
-package com.istec.main;
+package com.istec.paginas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,11 +7,18 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+
+import com.istec.objectos.Engine;
+import com.istec.objectos.Store;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
+
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 
@@ -26,7 +33,7 @@ public class AdminMain extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AdminMain frame = new AdminMain();
+					AdminMain frame = new AdminMain(Engine.currentStore);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,12 +45,14 @@ public class AdminMain extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AdminMain() {
+	public AdminMain(Store store) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 768);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(70, 130, 180));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		Border border = BorderFactory.createTitledBorder(store.name);
+		contentPane.setBorder(border);
+		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -71,7 +80,7 @@ public class AdminMain extends JFrame {
 		JLabel Adminmainlbladduser = new JLabel("New label");	
 		Adminmainlbladduser.setBounds(917, 10, 83, 83);
 		
-		Adminmainlbladduser.setIcon(new ImageIcon(new ImageIcon("D:\\GitHub\\ProjetoJava\\ProjetoJava\\img\\addUser.png").getImage().getScaledInstance(Adminmainlbladduser.getWidth(), Adminmainlbladduser.getHeight(), Image.SCALE_DEFAULT)));
+		Adminmainlbladduser.setIcon(new ImageIcon(new ImageIcon("img\\addUser.png").getImage().getScaledInstance(Adminmainlbladduser.getWidth(), Adminmainlbladduser.getHeight(), Image.SCALE_DEFAULT)));
 		contentPane.add(Adminmainlbladduser);
 		
 		JPanel Adminmainpanelusers = new JPanel();
@@ -83,5 +92,8 @@ public class AdminMain extends JFrame {
 		Adminmainpanelitems.setBounds(182, 142, 805, 535);
 		contentPane.add(Adminmainpanelitems);
 		Adminmainpanelitems.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		this.setVisible(true);
+		
 	}
 }

@@ -6,15 +6,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Engine {
+import com.istec.paginas.AdminMain;
+
+public class Engine implements Serializable {
 	private static String filename = "data.data";
 	
 	private static Engine instance;
 	public static User loggedUser;
 	public static Store currentStore;
-	public ArrayList<Store> stores;
+	public static ArrayList<Store> stores;
 
 
 
@@ -56,25 +59,36 @@ public class Engine {
 
 
 	//Registration Stuff
-	public static void login(String username, String password) {
-		for(User user: currentStore.users) {
-			if(user.username.equalsIgnoreCase(username)) {
-				if(user.password.equals(password)) {
-					Engine.loggedUser = user;
-					System.out.println("Login successful: "+user.username);
+	public static Boolean login(String username, String password) {
+		String result = null;
+		System.out.println("Login try with: "+username+" | "+password);
+		for(Store store : stores) {
+			for(User user: store.users) {
+				if(user.username.equalsIgnoreCase(username)) {
+					if(user.password.equals(password)) {
+						Engine.loggedUser = user;
+						Engine.currentStore = stores.get(stores.indexOf(store));
+						result = ("Login successful: "+user.username);
+						if(store.admin == user) {
+							new AdminMain(Engine.currentStore);
+						}
+						return true;
+					}else {
+						result = ("Login unsuccessful: Wrong Password");
+					}
 				}else {
-					System.out.println("Login unsuccessful: Wrong Password");
+					result = ("Login unsuccessful: Inexistent User");
 				}
-			}else {
-				System.out.println("Login unsuccessful: Inexistent User");
 			}
 		}
+		System.out.println(result);
+		return false;
 	}
 
-	public static void register(Admin admin, Store store) {
+	public static void register(Store store) {
 		try {
-			WriteFile(store);
-			currentStore = store;
+			stores.add(store);
+			WriteFile();
 			System.out.println("Registration successful");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -84,7 +98,7 @@ public class Engine {
 
 	public static void logout() {
 		Engine.loggedUser = null;
-		Engine.currentStore = null;
+		//Engine.currentStore = null;
 		System.out.println("Logout successful");
 	}
 
@@ -92,15 +106,15 @@ public class Engine {
 	//File Stuff
 	private void ReadFile(File file) throws IOException, ClassNotFoundException {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-			currentStore = (Store) in.readObject();
+			stores = (ArrayList<Store>) in.readObject();
 			in.close();
 	}
 	
-	private static void WriteFile(Store store) throws IOException {
+	private static void WriteFile() throws IOException {
 		FileOutputStream fos;
 		fos = new FileOutputStream(new File(filename));
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(store);
+		oos.writeObject(stores);
 	}
 	
 	public static Boolean hasFile() {

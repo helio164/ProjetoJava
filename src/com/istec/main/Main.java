@@ -1,13 +1,5 @@
 package com.istec.main;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
-
-import java.awt.FlowLayout;
-
 import com.istec.objectos.Admin;
 import com.istec.objectos.Engine;
 import com.istec.objectos.Store;
@@ -24,12 +16,14 @@ public class Main {
 			
 		
 		System.out.println("--- start ---");
-		//Engine.getInstance();
-		LoginPage frame = new LoginPage();
-		frame.setVisible(true);
+		Engine.getInstance();
+		//TestRegister();
+		new LoginPage();
+		//frame.setVisible(true);
 		//TestRegister();
 		//TestLoginOK();
 		//TestLoginNOK();
+		
 		//Engine.logout();
 		
 		System.out.println("--- stop ---");
@@ -37,20 +31,22 @@ public class Main {
 	}
 	
 	public static void TestRegister() {
-		Admin admin = new Admin("username", "email", "123");
-		Store store = new Store("Loja Mágica", "123456789", StoreType.OTHER, admin);
+		//Admin admin = new Admin("username", "email", "123");
+		Admin admin = new Admin("lolada", "email", "123");
+		//Store store = new Store("Loja Mágica", "123456789", StoreType.OTHER, admin);
+		Store store = new Store("Loja2", "123456", StoreType.FOOD, admin);
 		
-		Engine.register(admin, store);
+		Engine.register(store);
 	}
 	
 	public static void TestLoginOK() {
-		System.out.println(Engine.currentStore.name);
+		//System.out.println(Engine.currentStore.name);
 		Engine.login("username", "123");
 		System.out.println(Engine.loggedUser.username);
 	}
 	
 	public static void TestLoginNOK() {
-		System.out.println(Engine.currentStore.name);
+		//System.out.println(Engine.currentStore.name);
 		Engine.login("username", "password");
 		System.out.println(Engine.loggedUser.username);
 	}

@@ -11,11 +11,15 @@ import javax.swing.border.EmptyBorder;
 
 import com.istec.componentes.Placeholderpasswordfield;
 import com.istec.componentes.Placeholdertextfield;
+import com.istec.objectos.Engine;
+import com.istec.objectos.StoreType;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -24,6 +28,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 
 public class LoginPage extends JFrame {
 
@@ -87,7 +92,12 @@ public class LoginPage extends JFrame {
 		JButton loginBtn = new JButton("Login");
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "carregaste no botão");
+				
+				if(Engine.login(username.getText(), pwdField.getText())) {
+					close();
+				}else {
+					JOptionPane.showMessageDialog(null, "Login sem sucesso!");
+				}
 			}
 		});
 		loginBtn.setAutoscrolls(true);
@@ -133,6 +143,11 @@ public class LoginPage extends JFrame {
 		lblbackgroundimage.setIcon(new ImageIcon(new ImageIcon("img\\POS.jpg").getImage().getScaledInstance(lblbackgroundimage.getWidth(), lblbackgroundimage.getHeight(), Image.SCALE_DEFAULT)));
 		contentPane.add(lblbackgroundimage, BorderLayout.NORTH);
 		
-		
+		this.setVisible(true);
+	}
+	
+	
+	public void close(){
+		this.dispose();
 	}
 }
