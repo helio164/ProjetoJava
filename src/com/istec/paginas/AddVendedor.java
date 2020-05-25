@@ -21,9 +21,11 @@ import java.awt.Color;
 
 public class AddVendedor extends JFrame{
 	public AddVendedor() {
-	}
+	
 	
 	
 	
 	this.setVisible(true);
+}
+	
 }
