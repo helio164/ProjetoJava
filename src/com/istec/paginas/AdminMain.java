@@ -105,5 +105,6 @@ public class AdminMain extends JFrame {
 //        compsToExperiment.add(new JButton("5"));
 
 		this.setVisible(true);
+
 	}
 }
