@@ -56,6 +56,11 @@ public class AdminMain extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel Adminmainlbladditem = new JLabel("New label");
+		Adminmainlbladditem.setBounds(883, 620, 117, 111);
+		Adminmainlbladditem.setIcon(new ImageIcon(new ImageIcon("img\\add.png").getImage().getScaledInstance(Adminmainlbladditem.getWidth(), Adminmainlbladditem.getHeight(), Image.SCALE_DEFAULT)));
+		contentPane.add(Adminmainlbladditem);
+		
 		JButton Adminmainbtnmanage = new JButton("Manage");
 		Adminmainbtnmanage.setForeground(new Color(255, 255, 255));
 		Adminmainbtnmanage.setBackground(new Color(72, 209, 204));
@@ -93,7 +98,12 @@ public class AdminMain extends JFrame {
 		contentPane.add(Adminmainpanelitems);
 		Adminmainpanelitems.setLayout(new GridLayout(1, 0, 0, 0));
 		
+//		  compsToExperiment.add(new JButton("Button 1"));
+//        compsToExperiment.add(new JButton("Button 2"));
+//        compsToExperiment.add(new JButton("Button 3"));
+//        compsToExperiment.add(new JButton("Long-Named Button 4"));
+//        compsToExperiment.add(new JButton("5"));
+
 		this.setVisible(true);
-		
 	}
 }
