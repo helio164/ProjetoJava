@@ -85,15 +85,17 @@ public class Engine implements Serializable {
 		return false;
 	}
 
-	public static void register(Store store) {
+	public static Boolean register(Store store) {
 		try {
 			stores.add(store);
 			WriteFile();
 			System.out.println("Registration successful");
+			return true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return false;
 	}
 
 	public static void logout() {

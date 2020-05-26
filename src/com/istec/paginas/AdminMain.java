@@ -54,8 +54,8 @@ public class AdminMain extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(70, 130, 180));
 		//uncomment below
-		//Border border = BorderFactory.createTitledBorder(store.name);
-		//contentPane.setBorder(border);
+		Border border = BorderFactory.createTitledBorder(store.name);
+		contentPane.setBorder(border);
 		//uncomment above
 		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

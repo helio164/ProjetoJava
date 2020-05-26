@@ -12,14 +12,11 @@ public class Main {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static void main(String[] args) throws Exception {
-			
-		
+	public static void main(String[] args) throws Exception {		
 		System.out.println("--- start ---");
 		Engine.getInstance();
 		//TestRegister();
-		new LoginPage();
-		//frame.setVisible(true);
+		new LoginPage();		
 		//TestRegister();
 		//TestLoginOK();
 		//TestLoginNOK();

@@ -16,21 +16,24 @@ import javax.swing.border.EmptyBorder;
 
 import com.istec.componentes.Placeholderpasswordfield;
 import com.istec.componentes.Placeholdertextfield;
+import com.istec.objectos.Admin;
+import com.istec.objectos.Engine;
+import com.istec.objectos.Store;
+import com.istec.objectos.StoreType;
 
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class RegisterPage extends JFrame {
 	private int width = 923;
 	private int height = 777;
 
 	private JPanel contentPane;
-	private JPasswordField Password;
-	private JPasswordField ConfirmPassword;
-
 	/**
 	 * Launch the application.
 	 */
@@ -111,17 +114,22 @@ public class RegisterPage extends JFrame {
 		ConfirmPassword.setPlaceholder("Confirm Password");
 		Logincontainer.add(ConfirmPassword);
 		
+		JComboBox cbxStoreType = new JComboBox();
+		cbxStoreType.setModel(new DefaultComboBoxModel<>(StoreType.values()));
+		cbxStoreType.setBounds(153, 317, 157, 21);
+		Logincontainer.add(cbxStoreType);
+		
 		JButton BackAdmin = new JButton("Back");
 		BackAdmin.setBounds(27, 375, 168, 77);
 		Logincontainer.add(BackAdmin);
-		BackAdmin.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		BackAdmin.setBackground(new Color(32, 178, 170));
+		BackAdmin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//JOptionPane.showMessageDialog(null, "carregaste no Back");
 				new LoginPage();
 				close();
 			}
 		});
-		BackAdmin.setBackground(new Color(32, 178, 170));
 		
 		JButton RegisterAdmin = new JButton("Register");
 		RegisterAdmin.setBounds(260, 375, 157, 77);
@@ -129,12 +137,20 @@ public class RegisterPage extends JFrame {
 		RegisterAdmin.setBackground(new Color(32, 178, 170));
 		RegisterAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "carregaste no Register");
-			}
-		});
-		BackAdmin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "carregaste no Back");
+				//JOptionPane.showMessageDialog(null, "carregaste no Register");
+				if(Password.getText().equals(ConfirmPassword.getText())) {
+					Store newStore = new Store(
+							CompanyName.getText(),
+							VATNumber.getText(),
+							(StoreType) cbxStoreType.getSelectedItem(),
+							new Admin(
+									Username.getText(),
+									Email.getText(),
+									Password.getText()
+									)
+							);
+					Engine.register(newStore);
+				}
 			}
 		});
 		
@@ -143,7 +159,11 @@ public class RegisterPage extends JFrame {
 		lblbackgroundimage.setBounds(0,0,width,height);
 		lblbackgroundimage.setIcon(new ImageIcon(new ImageIcon("img\\POS.jpg").getImage().getScaledInstance(lblbackgroundimage.getWidth(), lblbackgroundimage.getHeight(), Image.SCALE_DEFAULT)));
 		contentPane.add(lblbackgroundimage);
+		
+		this.setVisible(true);
 	}
+
 	public void close(){
-		this.dispose();}
+		this.dispose();
 	}
+}
