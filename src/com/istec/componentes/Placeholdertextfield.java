@@ -36,5 +36,4 @@ public class Placeholdertextfield extends JTextField {
 		g.drawString(placeholder, getInsets().left, pG.getFontMetrics().getMaxAscent() + getInsets().top);
 	}
 	
-	
 }

@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
 
 public class AddVendedor extends JFrame {
 
@@ -52,29 +53,29 @@ public class AddVendedor extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		Placeholdertextfield AdminAddVendedorUsername = new Placeholdertextfield();
-		AdminAddVendedorUsername.setBounds(176, 202, 231, 19);
-		AdminAddVendedorUsername.setPlaceholder("Username");
-		AdminAddVendedorUsername.setOpaque(true);
-		contentPane.add(AdminAddVendedorUsername);
+		Placeholdertextfield AddVendedorUsername = new Placeholdertextfield();
+		AddVendedorUsername.setBounds(176, 202, 231, 19);
+		AddVendedorUsername.setPlaceholder("Username");
+		AddVendedorUsername.setOpaque(true);
+		contentPane.add(AddVendedorUsername);
 		
-		Placeholdertextfield AdminAddVendedorEmail = new Placeholdertextfield();
-		AdminAddVendedorEmail.setBounds(176, 231, 231, 19);
-		AdminAddVendedorEmail.setPlaceholder("email");
-		AdminAddVendedorEmail.setOpaque(true);
-		contentPane.add(AdminAddVendedorEmail);
+		Placeholdertextfield AddVendedorEmail = new Placeholdertextfield();
+		AddVendedorEmail.setBounds(176, 231, 231, 19);
+		AddVendedorEmail.setPlaceholder("email");
+		AddVendedorEmail.setOpaque(true);
+		contentPane.add(AddVendedorEmail);
 		
-		Placeholderpasswordfield AdminAddVendedorPassword = new Placeholderpasswordfield();
-		AdminAddVendedorPassword.setBounds(176, 260, 231, 19);
-		AdminAddVendedorPassword.setPlaceholder("password");
-		AdminAddVendedorPassword.setOpaque(true);
-		contentPane.add(AdminAddVendedorPassword);
+		Placeholderpasswordfield AddVendedorPassword = new Placeholderpasswordfield();
+		AddVendedorPassword.setBounds(176, 260, 231, 19);
+		AddVendedorPassword.setPlaceholder("password");
+		AddVendedorPassword.setOpaque(true);
+		contentPane.add(AddVendedorPassword);
 		
-		Placeholderpasswordfield AdminAddVendedorConfirmPassword = new Placeholderpasswordfield();
-		AdminAddVendedorConfirmPassword.setBounds(176, 289, 231, 19);
-		AdminAddVendedorConfirmPassword.setPlaceholder("Confirm Password");
-		AdminAddVendedorConfirmPassword.setOpaque(true);
-		contentPane.add(AdminAddVendedorConfirmPassword);
+		Placeholderpasswordfield AddVendedorConfirmPassword = new Placeholderpasswordfield();
+		AddVendedorConfirmPassword.setBounds(176, 289, 231, 19);
+		AddVendedorConfirmPassword.setPlaceholder("Confirm Password");
+		AddVendedorConfirmPassword.setOpaque(true);
+		contentPane.add(AddVendedorConfirmPassword);
 	
 		JButton Adminbtncancel = new JButton("Cancel");
 		Adminbtncancel.setBackground(new Color(32, 178, 170));
