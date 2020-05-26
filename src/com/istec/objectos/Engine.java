@@ -105,6 +105,26 @@ public class Engine implements Serializable {
 	}
 
 
+	//Vendedor stuff
+	public static Boolean addVendedor(Vendedor vendedor) {
+		
+		if(currentStore.users.stream().anyMatch(x -> x.username.equals(vendedor.username) || x.email.equals(vendedor.email))) {
+			System.out.println("Vendedor já existe");		
+		}else {
+			try {
+				System.out.println("Novo Vendedor");
+				currentStore.users.add(vendedor);
+				System.out.println("Saving on file");
+				WriteFile();
+				return true;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+	
+	
 	//File Stuff
 	private void ReadFile(File file) throws IOException, ClassNotFoundException {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));

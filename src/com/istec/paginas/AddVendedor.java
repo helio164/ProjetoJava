@@ -13,6 +13,9 @@ import javax.swing.JOptionPane;
 
 import java.awt.FlowLayout;
 import com.istec.componentes.Placeholdertextfield;
+import com.istec.objectos.Engine;
+import com.istec.objectos.User;
+import com.istec.objectos.Vendedor;
 import com.istec.componentes.Placeholderpasswordfield;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -77,27 +80,35 @@ public class AddVendedor extends JFrame {
 		AddVendedorConfirmPassword.setOpaque(true);
 		contentPane.add(AddVendedorConfirmPassword);
 	
-		JButton Adminbtncancel = new JButton("Cancel");
-		Adminbtncancel.setBackground(new Color(32, 178, 170));
-		Adminbtncancel.addActionListener(new ActionListener() {
+		JButton AddVendedorbtncancel = new JButton("Cancel");
+		AddVendedorbtncancel.setBackground(new Color(32, 178, 170));
+		AddVendedorbtncancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no cancel");
 				close();
 			}
 		});
-		Adminbtncancel.setBounds(68, 382, 168, 104);
+		AddVendedorbtncancel.setBounds(68, 382, 168, 104);		
+		contentPane.add(AddVendedorbtncancel);
 		
-		contentPane.add(Adminbtncancel);
-		
-		JButton Adminbtncreate = new JButton("Register");
-		Adminbtncreate.setBackground(new Color(32, 178, 170));
-		Adminbtncreate.setBounds(348, 383, 168, 104);
-		Adminbtncreate.addActionListener(new ActionListener() {
+		JButton AddVendedorbtncreate = new JButton("Register");
+		AddVendedorbtncreate.setBackground(new Color(32, 178, 170));
+		AddVendedorbtncreate.setBounds(348, 383, 168, 104);
+		AddVendedorbtncreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "carregaste no register");
+				//JOptionPane.showMessageDialog(null, "carregaste no register");
+				
+				if(Engine.addVendedor(
+						new Vendedor(AddVendedorUsername.getText(),AddVendedorEmail.getText(),AddVendedorPassword.getText()))
+				) {
+					JOptionPane.showMessageDialog(null, "Vendedor adicionado COM sucesso!");
+					close();
+				} else {
+					JOptionPane.showMessageDialog(null, "Vendedor adicionado SEM sucesso!");
+				}
 			}
 		});
-		contentPane.add(Adminbtncreate);
+		contentPane.add(AddVendedorbtncreate);
 		
 		this.setVisible(true);
 	}
