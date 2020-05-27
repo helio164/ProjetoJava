@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+import javax.swing.JTabbedPane;
+import javax.swing.JButton;
 
 public class VendedorMain extends JFrame {
 
@@ -41,16 +43,26 @@ public class VendedorMain extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel Adminmainpanelitems = new JPanel();
-		Adminmainpanelitems.setBounds(253, 46, 752, 646);
-		Adminmainpanelitems.setBackground(new Color(255, 255, 255));
-		contentPane.add(Adminmainpanelitems);
-		Adminmainpanelitems.setLayout(new GridLayout(1, 0, 0, 0));
-		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(22, 46, 221, 590);
+		panel.setBounds(17, 58, 221, 590);
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(0, 3, 0, 0));
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(248, 58, 741, 590);
+		contentPane.add(tabbedPane);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(404, 27, 85, 21);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.setBounds(500, 27, 85, 21);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("New button");
+		btnNewButton_2.setBounds(595, 27, 85, 21);
+		contentPane.add(btnNewButton_2);
 	}
 }

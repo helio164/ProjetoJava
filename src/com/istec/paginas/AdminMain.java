@@ -24,6 +24,7 @@ import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTabbedPane;
 
 public class AdminMain extends JFrame {
 
