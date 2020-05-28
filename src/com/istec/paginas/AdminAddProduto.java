@@ -13,6 +13,9 @@ import javax.swing.JOptionPane;
 
 import java.awt.FlowLayout;
 import com.istec.componentes.Placeholdertextfield;
+import com.istec.objectos.Engine;
+import com.istec.objectos.Product;
+import com.istec.objectos.Vendedor;
 import com.istec.componentes.Placeholderpasswordfield;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -20,6 +23,10 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class AdminAddProduto extends JFrame {
 
@@ -93,16 +100,11 @@ public class AdminAddProduto extends JFrame {
 		contentPane.add(AdminAddType);
 	
 		JButton Adminbtncancel = new JButton("Cancel");
-		Adminbtncancel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				close();
-			}
-		});
 		Adminbtncancel.setBackground(new Color(32, 178, 170));
 		Adminbtncancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "carregaste no cancel");
+				//JOptionPane.showMessageDialog(null, "carregaste no cancel");
+				close();
 			}
 		});
 		Adminbtncancel.setBounds(68, 382, 168, 104);
@@ -114,7 +116,18 @@ public class AdminAddProduto extends JFrame {
 		Adminbtncreate.setBounds(348, 383, 168, 104);
 		Adminbtncreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "carregaste no create");
+				//JOptionPane.showMessageDialog(null, "carregaste no create");
+				String designation = AdminAddDesignation.getText();
+				String code = AdminAddCode.getText();
+				Double price = Double.parseDouble(AdminAddPrice.getText());
+				String type = AdminAddType.getText();
+								
+				if(Engine.addProduct(new Product(designation, code, price, type))) {
+					JOptionPane.showMessageDialog(null, "Produto adicionado COM sucesso!");
+					close();
+				} else {
+					JOptionPane.showMessageDialog(null, "Produto adicionado SEM sucesso!");
+				}	
 			}
 		});
 		contentPane.add(Adminbtncreate);

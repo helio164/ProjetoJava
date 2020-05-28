@@ -3,6 +3,8 @@ package com.istec.paginas;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.awt.Insets;
+import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -10,24 +12,36 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import com.istec.componentes.GridOfProducts;
+import com.istec.componentes.ListOfVendedoresPanel;
 import com.istec.objectos.Engine;
 import com.istec.objectos.Store;
+import com.istec.objectos.User;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Graphics;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowFocusListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.FlowLayout;
 
 public class AdminMain extends JFrame {
 
-	private JPanel contentPane;
+	private static JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -36,7 +50,7 @@ public class AdminMain extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AdminMain frame = new AdminMain(Engine.currentStore);
+					AdminMain frame = new AdminMain();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,13 +62,13 @@ public class AdminMain extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AdminMain(Store store) {
+	public AdminMain() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 768);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(70, 130, 180));
 		//uncomment below
-		Border border = BorderFactory.createTitledBorder(store.name);
+		Border border = BorderFactory.createTitledBorder(Engine.currentStore.name);
 		contentPane.setBorder(border);
 		//uncomment above
 		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -103,23 +117,34 @@ public class AdminMain extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				//JOptionPane.showMessageDialog(null, "carreguei no cenas");
 				new AddVendedor();
-				
+				System.out.println("Registration successful");
 			}
 		});		
 		Adminmainlbladduser.setBounds(917, 10, 83, 83);		
 		Adminmainlbladduser.setIcon(new ImageIcon(new ImageIcon("img\\addUser.png").getImage().getScaledInstance(Adminmainlbladduser.getWidth(), Adminmainlbladduser.getHeight(), Image.SCALE_DEFAULT)));
 		contentPane.add(Adminmainlbladduser);
 		
-		JPanel Adminmainpanelusers = new JPanel();
-		Adminmainpanelusers.setBounds(180, 20, 657, 73);
-		contentPane.add(Adminmainpanelusers);
+		ListOfVendedoresPanel Adminmainpanelusers = new ListOfVendedoresPanel();
+		Adminmainpanelusers.setBounds(180, 20, 703, 73);
 		Adminmainpanelusers.setLayout(new BoxLayout(Adminmainpanelusers, BoxLayout.X_AXIS));
+		//lov.loadVendedores();
+		contentPane.add(Adminmainpanelusers);
 		
-		JPanel Adminmainpanelitems = new JPanel();
-		Adminmainpanelitems.setBounds(182, 142, 805, 535);
+		GridOfProducts Adminmainpanelitems = new GridOfProducts();
+		//JPanel Adminmainpanelitems = new JPanel();
+		Adminmainpanelitems.setBounds(182, 142, 800, 500);
 		contentPane.add(Adminmainpanelitems);
-		Adminmainpanelitems.setLayout(new GridLayout(1, 0, 0, 0));
 		
+		addWindowFocusListener(new WindowFocusListener() {
+			public void windowGainedFocus(WindowEvent e) {
+				Adminmainpanelusers.loadVendedores();
+				Adminmainpanelitems.loadProducts();
+				//JOptionPane.showMessageDialog(null, "novo foco");
+			}
+			public void windowLostFocus(WindowEvent e) {
+			}
+		});
+
 //		  compsToExperiment.add(new JButton("Button 1"));
 //        compsToExperiment.add(new JButton("Button 2"));
 //        compsToExperiment.add(new JButton("Button 3"));

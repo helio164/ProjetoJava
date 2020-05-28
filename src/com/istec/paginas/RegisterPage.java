@@ -149,7 +149,12 @@ public class RegisterPage extends JFrame {
 									Password.getText()
 									)
 							);
-					Engine.register(newStore);
+					if(Engine.register(newStore)) {
+						JOptionPane.showMessageDialog(null, "Registo adicionado COM sucesso!");
+						close();
+					} else {
+						JOptionPane.showMessageDialog(null, "Vendedor adicionado SEM sucesso!");
+					}
 				}
 			}
 		});

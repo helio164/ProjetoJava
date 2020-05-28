@@ -2,6 +2,7 @@ package com.istec.objectos;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -22,7 +23,7 @@ public class Engine implements Serializable {
 
 
 	public Engine() {
-		
+		stores = new ArrayList<Store>();
 		// TODO Auto-generated constructor stub
 		File file = new File(filename);
 		if(file.exists()) {
@@ -62,24 +63,30 @@ public class Engine implements Serializable {
 	public static Boolean login(String username, String password) {
 		String result = null;
 		System.out.println("Login try with: "+username+" | "+password);
-		for(Store store : stores) {
-			for(User user: store.users) {
-				if(user.username.equalsIgnoreCase(username)) {
-					if(user.password.equals(password)) {
-						Engine.loggedUser = user;
-						Engine.currentStore = stores.get(stores.indexOf(store));
-						result = ("Login successful: "+user.username);
-						if(store.admin == user) {
-							new AdminMain(Engine.currentStore);
+		try {
+			for(Store store : stores) {
+				for(User user: store.users) {
+					if(user.username.equalsIgnoreCase(username)) {
+						if(user.password.equals(password)) {
+							Engine.loggedUser = user;
+							Engine.currentStore = stores.get(stores.indexOf(store));
+							result = ("Login successful: "+user.username);
+							if(store.admin == user) {
+								new AdminMain();
+							}
+							return true;
+						}else {
+							result = ("Login unsuccessful: Wrong Password");
 						}
-						return true;
 					}else {
-						result = ("Login unsuccessful: Wrong Password");
+						result = ("Login unsuccessful: Inexistent User");
 					}
-				}else {
-					result = ("Login unsuccessful: Inexistent User");
 				}
 			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("ERRO a efectuar o Login");
+			//e.printStackTrace();			
 		}
 		System.out.println(result);
 		return false;
@@ -125,11 +132,42 @@ public class Engine implements Serializable {
 	}
 	
 	
+	//Product stuff
+	public static boolean addProduct(Product product) {
+		if(currentStore.products.stream().anyMatch(x -> x.Designation.equals(product.Designation) && x.Code.equals(product.Code))) {
+			System.out.println("Produto já existe");
+		}else {
+			try {
+				System.out.println("Novo Produto");
+				currentStore.products.add(product);
+				System.out.println("Saving on file");
+				WriteFile();
+				return true;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}		
+		return false;
+	}
+	
+	
 	//File Stuff
+	@SuppressWarnings("unchecked")
 	private void ReadFile(File file) throws IOException, ClassNotFoundException {
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-			stores = (ArrayList<Store>) in.readObject();
-			in.close();
+			try {
+				ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+				stores = (ArrayList<Store>) in.readObject();
+				in.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 	
 	private static void WriteFile() throws IOException {
@@ -137,6 +175,7 @@ public class Engine implements Serializable {
 		fos = new FileOutputStream(new File(filename));
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeObject(stores);
+		oos.close();
 	}
 	
 	public static Boolean hasFile() {
