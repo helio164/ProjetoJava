@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.swing.BorderFactory;
@@ -40,20 +41,17 @@ public class GridOfProducts extends JTabbedPane {
 		}
 		
 		for(String t : types) {
-			//ArrayList<Product> prods = (ArrayList<Product>) Engine.currentStore.products.stream().filter(x -> x.Type.equals(t));
+			ArrayList<Product> prods = (ArrayList<Product>) Engine.currentStore.products.stream().filter(x -> x.Type.equals(t)).collect(Collectors.toList());
 			JPanel panel = new JPanel();
 			panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-			
-			for(Product p : Engine.currentStore.products) {
-				if(p.Type.equals(t)) {
+
+			for(Product p : prods) {
 					JLabel label = new JLabel();
 					label.setBounds(new Rectangle(100, 100));
-					label.setToolTipText(p.Designation+" - \t"+p.Price+"€");
+					label.setToolTipText(p.Designation+" - \n"+p.Price+"€");
 					label.setIcon(new ImageIcon(new ImageIcon("img\\product.png").getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT)));
 					panel.add(label);
-				}
 			}
-			
 			this.addTab(t, panel);
 		}
 				
