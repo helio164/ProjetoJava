@@ -50,7 +50,8 @@ public class VendedorMain extends JFrame {
 		panel.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(248, 58, 741, 590);
+		tabbedPane.setBackground(new Color(255, 255, 255));
+		tabbedPane.setBounds(248, 58, 741, 629);
 		contentPane.add(tabbedPane);
 		
 		JButton btnNewButton = new JButton("New button");
@@ -64,5 +65,10 @@ public class VendedorMain extends JFrame {
 		JButton btnNewButton_2 = new JButton("New button");
 		btnNewButton_2.setBounds(595, 27, 85, 21);
 		contentPane.add(btnNewButton_2);
+		
+		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.setBackground(new Color(0, 206, 209));
+		btnConfirm.setBounds(17, 647, 221, 42);
+		contentPane.add(btnConfirm);
 	}
 }
