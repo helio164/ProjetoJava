@@ -150,6 +150,12 @@ public class Engine implements Serializable {
 		return false;
 	}
 	
+	public static void addProductToSale(Product product) {
+		currentStore.sales = new ArrayList<Sale>();
+		Sale sale = new Sale();
+		sale.products.add(product);
+		currentStore.sales.add(sale);
+	}
 	
 	//File Stuff
 	@SuppressWarnings("unchecked")

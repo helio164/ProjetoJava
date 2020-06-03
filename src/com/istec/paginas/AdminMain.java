@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import com.istec.componentes.GridOfProducts;
 import com.istec.componentes.ListOfVendedoresPanel;
+import com.istec.componentes.PItem;
 import com.istec.objectos.Engine;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -76,6 +77,13 @@ public class AdminMain extends JFrame {
 		contentPane.add(Adminmainbtnmanage);
 
 		JButton Adminmainbtnsales = new JButton("Sales");
+		Adminmainbtnsales.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new VendedorMain();
+				close();
+			}
+		});
 		Adminmainbtnsales.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		Adminmainbtnsales.setForeground(new Color(255, 255, 255));
 		Adminmainbtnsales.setBackground(new Color(72, 209, 204));
@@ -101,14 +109,17 @@ public class AdminMain extends JFrame {
 		Adminmainlbladduser.setIcon(new ImageIcon(new ImageIcon("img\\addUser.png").getImage().getScaledInstance(Adminmainlbladduser.getWidth(), Adminmainlbladduser.getHeight(), Image.SCALE_DEFAULT)));
 		contentPane.add(Adminmainlbladduser);
 
-		ListOfVendedoresPanel Adminmainpanelusers = new ListOfVendedoresPanel();
-		Adminmainpanelusers.setBounds(180, 20, 703, 73);
-		Adminmainpanelusers.setLayout(new BoxLayout(Adminmainpanelusers, BoxLayout.X_AXIS));
-		contentPane.add(Adminmainpanelusers);
-
-		GridOfProducts Adminmainpanelitems = new GridOfProducts();
-		Adminmainpanelitems.setBounds(182, 142, 800, 500);
-		contentPane.add(Adminmainpanelitems);
+		
+		  ListOfVendedoresPanel Adminmainpanelusers = new ListOfVendedoresPanel();
+		  Adminmainpanelusers.setBounds(180, 20, 703, 73);
+		  Adminmainpanelusers.setLayout(new BoxLayout(Adminmainpanelusers,
+		  BoxLayout.X_AXIS)); contentPane.add(Adminmainpanelusers);
+		  
+		  GridOfProducts Adminmainpanelitems = new GridOfProducts("ADMIN");
+		  Adminmainpanelitems.setBounds(182, 142, 800, 500);
+		  
+		  contentPane.add(Adminmainpanelitems);
+		 
 
 		addWindowFocusListener(new WindowFocusListener() {
 			public void windowGainedFocus(WindowEvent e) {
@@ -126,5 +137,9 @@ public class AdminMain extends JFrame {
 //        compsToExperiment.add(new JButton("5"));
 
 		this.setVisible(true);
+	}
+	
+	public void close(){
+		this.dispose();
 	}
 }

@@ -22,9 +22,12 @@ import com.istec.objectos.Engine;
 import com.istec.objectos.Product;
 
 public class GridOfProducts extends JTabbedPane {
-
-	public GridOfProducts() {
+	//public PItem product;
+	public String page;
+	
+	public GridOfProducts(String page) {
 		// TODO Auto-generated constructor stub
+		this.page = page;
 		JTabbedPane tabbedpane = new JTabbedPane(); 
 		tabbedpane.setTabPlacement(EAST);
 		this.loadProducts();
@@ -46,11 +49,21 @@ public class GridOfProducts extends JTabbedPane {
 			panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
 			for(Product p : prods) {
-					JLabel label = new JLabel();
-					label.setBounds(new Rectangle(100, 100));
-					label.setToolTipText(p.Designation+" - \n"+p.Price+"€");
-					label.setIcon(new ImageIcon(new ImageIcon("img\\product.png").getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT)));
-					panel.add(label);
+				PItem product = new PItem(p);				
+				product.setBounds(new Rectangle(100, 100));
+				product.setToolTipText(p.Designation+" - \n"+p.Price+"€");
+				product.setIcon(new ImageIcon(new ImageIcon("img\\product.png").getImage().getScaledInstance(product.getWidth(), product.getHeight(), Image.SCALE_DEFAULT)));
+				product.addMouseListener(new MouseAdapter() {
+					public void mouseClicked(MouseEvent e) {
+						if(page.equals("SALES")) {
+							PItem p = (PItem)e.getSource();
+							JOptionPane.showMessageDialog(null,"Product "+ p.obj.Designation +" added");
+						}else {
+							JOptionPane.showMessageDialog(null,"Page is admin");
+						}
+					}
+				});
+					panel.add(product);
 			}
 			this.addTab(t, panel);
 		}
@@ -76,5 +89,6 @@ public class GridOfProducts extends JTabbedPane {
 	}
 	
 }
+
 
 
