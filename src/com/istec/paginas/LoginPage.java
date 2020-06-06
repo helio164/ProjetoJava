@@ -131,7 +131,9 @@ public class LoginPage extends JFrame {
 		recover.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "mudar para pagina de recuperacao password");
+				//JOptionPane.showMessageDialog(null, "mudar para pagina de recuperacao password");
+				new RecuperarPassword();
+				close();
 			}
 		});
 		recover.setFont(new Font("Tahoma", Font.BOLD, 17));
