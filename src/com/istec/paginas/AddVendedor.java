@@ -16,13 +16,19 @@ import com.istec.componentes.Placeholdertextfield;
 import com.istec.objectos.Engine;
 import com.istec.objectos.User;
 import com.istec.objectos.Vendedor;
+import com.istec.componentes.ChooseFile;
+import com.istec.componentes.ListOfVendedoresPanel;
 import com.istec.componentes.Placeholderpasswordfield;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AddVendedor extends JFrame {
 
@@ -55,6 +61,31 @@ public class AddVendedor extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblFotoVendedor = new JLabel("New label");
+		lblFotoVendedor.addMouseListener(new MouseAdapter() {
+			@Override
+			//Marcos inventou aqui cenas
+						
+			public void mouseClicked(MouseEvent e) {
+				final JFileChooser fc = new JFileChooser();
+				int returnVal = fc.showOpenDialog(fc);
+				String filePath = null;
+				if (returnVal == JFileChooser.APPROVE_OPTION) {
+					filePath = fc.getSelectedFile().getAbsolutePath();
+					
+				} else {
+					System.out.println("User clicked CANCEL");
+					System.exit(1);
+					
+				}
+				
+				new ChooseFile(filePath);
+				
+			}
+		});
+		lblFotoVendedor.setBounds(232, 52, 128, 113);
+		contentPane.add(lblFotoVendedor);
 		
 		Placeholdertextfield AddVendedorUsername = new Placeholdertextfield();
 		AddVendedorUsername.setBounds(176, 202, 231, 19);

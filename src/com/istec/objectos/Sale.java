@@ -1,9 +1,10 @@
 package com.istec.objectos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Sale {
+public class Sale implements Serializable {
 	public ArrayList<Product> products;
 	public Receipt receipt;
 	public User vendor;

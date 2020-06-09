@@ -7,11 +7,28 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.istec.componentes.GridOfProducts;
+import com.istec.componentes.PItem;
+import com.istec.objectos.Product;
+
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JTabbedPane;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class VendedorMain extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -41,16 +58,27 @@ public class VendedorMain extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel Adminmainpanelitems = new JPanel();
-		Adminmainpanelitems.setBounds(253, 46, 752, 646);
-		Adminmainpanelitems.setBackground(new Color(255, 255, 255));
-		contentPane.add(Adminmainpanelitems);
-		Adminmainpanelitems.setLayout(new GridLayout(1, 0, 0, 0));
-		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(22, 46, 221, 590);
+		panel.setBounds(17, 58, 221, 590);
 		contentPane.add(panel);
-		panel.setLayout(new GridLayout(0, 3, 0, 0));
+		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		table = new JTable();
+		panel.add(table);
+		
+		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.setBackground(new Color(0, 206, 209));
+		btnConfirm.setBounds(17, 647, 221, 42);
+		contentPane.add(btnConfirm);
+		
+		/*
+		 * GridOfProducts Vendedorpanelitems = new GridOfProducts("SALES");
+		 * Vendedorpanelitems.setBounds(257, 58, 725, 631);
+		 * contentPane.add(Vendedorpanelitems);
+		 */
+		
+		
+		this.setVisible(true);
 	}
 }
