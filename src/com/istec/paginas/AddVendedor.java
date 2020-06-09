@@ -99,13 +99,21 @@ public class AddVendedor extends JFrame {
 				//JOptionPane.showMessageDialog(null, "carregaste no register");
 				
 				if(Engine.addVendedor(
-						new Vendedor(AddVendedorUsername.getText(),AddVendedorEmail.getText(),AddVendedorPassword.getText()))
-				) {
-					JOptionPane.showMessageDialog(null, "Vendedor adicionado COM sucesso!");
-					close();
+						new Vendedor(AddVendedorUsername.getText(),AddVendedorEmail.getText(),AddVendedorPassword.getText()))) {
+					
 				} else {
-					JOptionPane.showMessageDialog(null, "Vendedor adicionado SEM sucesso!");
+					if(Engine.addVendedor(
+							new Vendedor(AddVendedorUsername.getText(),AddVendedorEmail.getText(),AddVendedorPassword.getText()))
+					) {
+						JOptionPane.showMessageDialog(null, "Vendedor adicionado COM sucesso!");
+						close();
+					} else {
+						JOptionPane.showMessageDialog(null, "Vendedor adicionado SEM sucesso!");
+					}
 				}
+				
+				
+				
 			}
 		});
 		contentPane.add(AddVendedorbtncreate);
