@@ -120,7 +120,7 @@ public class AdminAddProduto extends JFrame {
 				String designation = AdminAddDesignation.getText();
 				String code = AdminAddCode.getText();
 				Double price = Double.parseDouble(AdminAddPrice.getText());
-				String type = AdminAddType.getText();
+				String type = AdminAddType.getText().toUpperCase();
 								
 				if(Engine.addProduct(new Product(designation, code, price, type))) {
 					JOptionPane.showMessageDialog(null, "Produto adicionado COM sucesso!");

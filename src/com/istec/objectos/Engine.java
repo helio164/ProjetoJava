@@ -19,7 +19,7 @@ public class Engine implements Serializable {
 	public static User loggedUser;
 	public static Store currentStore;
 	public static ArrayList<Store> stores;
-
+	public static Sale currentSale;
 
 
 	public Engine() {
@@ -151,10 +151,16 @@ public class Engine implements Serializable {
 	}
 	
 	public static void addProductToSale(Product product) {
-		currentStore.sales = new ArrayList<Sale>();
-		Sale sale = new Sale();
-		sale.products.add(product);
-		currentStore.sales.add(sale);
+		try {
+			if(currentSale == null) {
+			currentSale = new Sale();
+			}
+			currentSale.products.add(product);
+			WriteFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//currentStore.sales.add(sale);
 	}
 	
 	//File Stuff

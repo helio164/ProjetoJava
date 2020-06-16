@@ -29,6 +29,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class RegisterPage extends JFrame {
 	private int width = 923;
