@@ -28,6 +28,7 @@ import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Font;
 
 public class RegisterPage extends JFrame {
 	private int width = 923;
@@ -120,9 +121,11 @@ public class RegisterPage extends JFrame {
 		Logincontainer.add(cbxStoreType);
 		
 		JButton BackAdmin = new JButton("Back");
+		BackAdmin.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		BackAdmin.setForeground(Color.DARK_GRAY);
 		BackAdmin.setBounds(27, 375, 168, 77);
 		Logincontainer.add(BackAdmin);
-		BackAdmin.setBackground(new Color(32, 178, 170));
+		BackAdmin.setBackground(new Color(0, 255, 0));
 		BackAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no Back");
@@ -132,9 +135,11 @@ public class RegisterPage extends JFrame {
 		});
 		
 		JButton RegisterAdmin = new JButton("Register");
+		RegisterAdmin.setFont(new Font("Tahoma", Font.ITALIC, 12));
+		RegisterAdmin.setForeground(Color.DARK_GRAY);
 		RegisterAdmin.setBounds(260, 375, 157, 77);
 		Logincontainer.add(RegisterAdmin);
-		RegisterAdmin.setBackground(new Color(32, 178, 170));
+		RegisterAdmin.setBackground(new Color(0, 255, 0));
 		RegisterAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no Register");
