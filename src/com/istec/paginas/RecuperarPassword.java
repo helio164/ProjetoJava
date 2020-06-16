@@ -18,6 +18,8 @@ import com.istec.componentes.Placeholdertextfield;
 
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.UIManager;
+import javax.swing.border.BevelBorder;
 
 public class RecuperarPassword extends JFrame {
 
@@ -63,25 +65,30 @@ public class RecuperarPassword extends JFrame {
 		lblTitulo.setForeground(Color.BLACK);
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitulo.setBounds(73, 36, 276, 66);
+		lblTitulo.setBounds(67, 36, 276, 66);
 		loginContainer.add(lblTitulo);
 		
 		Placeholdertextfield Email = new Placeholdertextfield();
-		Email.setBounds(132, 148, 145, 20);
+		Email.setBounds(92, 148, 231, 25);
 		loginContainer.add(Email);
 		Email.setPlaceholder("E-mail");
 		Email.setOpaque(true);
 		
 		JButton btnCancel = new JButton("Cancelar");
+		btnCancel.setForeground(Color.DARK_GRAY);
+		btnCancel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		btnCancel.setBounds(132, 297, 145, 56);
 		loginContainer.add(btnCancel);
-		btnCancel.setBackground(new Color(32, 178, 170));
+		btnCancel.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		
 		
 		JButton btnConfirm = new JButton("Recuperar");
+		btnConfirm.setForeground(Color.DARK_GRAY);
+		btnConfirm.setBorder(UIManager.getBorder("Button.border"));
+		btnConfirm.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		btnConfirm.setBounds(132, 202, 145, 56);
 		loginContainer.add(btnConfirm);
-		btnConfirm.setBackground(new Color(32, 178, 170));
+		btnConfirm.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			

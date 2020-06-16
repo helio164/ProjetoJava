@@ -29,6 +29,10 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.UIManager;
+import java.awt.Font;
+import java.awt.SystemColor;
+import javax.swing.SwingConstants;
 
 public class AddVendedor extends JFrame {
 
@@ -88,43 +92,47 @@ public class AddVendedor extends JFrame {
 		contentPane.add(lblFotoVendedor);
 		
 		Placeholdertextfield AddVendedorUsername = new Placeholdertextfield();
-		AddVendedorUsername.setBounds(176, 202, 231, 19);
+		AddVendedorUsername.setBounds(176, 189, 231, 25);
 		AddVendedorUsername.setPlaceholder("Username");
 		AddVendedorUsername.setOpaque(true);
 		contentPane.add(AddVendedorUsername);
 		
 		Placeholdertextfield AddVendedorEmail = new Placeholdertextfield();
-		AddVendedorEmail.setBounds(176, 231, 231, 19);
+		AddVendedorEmail.setBounds(176, 225, 231, 25);
 		AddVendedorEmail.setPlaceholder("email");
 		AddVendedorEmail.setOpaque(true);
 		contentPane.add(AddVendedorEmail);
 		
 		Placeholderpasswordfield AddVendedorPassword = new Placeholderpasswordfield();
-		AddVendedorPassword.setBounds(176, 260, 231, 19);
+		AddVendedorPassword.setBounds(176, 260, 231, 25);
 		AddVendedorPassword.setPlaceholder("password");
 		AddVendedorPassword.setOpaque(true);
 		contentPane.add(AddVendedorPassword);
 		
 		Placeholderpasswordfield AddVendedorConfirmPassword = new Placeholderpasswordfield();
-		AddVendedorConfirmPassword.setBounds(176, 289, 231, 19);
+		AddVendedorConfirmPassword.setBounds(176, 298, 231, 25);
 		AddVendedorConfirmPassword.setPlaceholder("Confirm Password");
 		AddVendedorConfirmPassword.setOpaque(true);
 		contentPane.add(AddVendedorConfirmPassword);
 	
 		JButton AddVendedorbtncancel = new JButton("Cancel");
-		AddVendedorbtncancel.setBackground(new Color(32, 178, 170));
+		AddVendedorbtncancel.setForeground(Color.DARK_GRAY);
+		AddVendedorbtncancel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		AddVendedorbtncancel.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		AddVendedorbtncancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no cancel");
 				close();
 			}
 		});
-		AddVendedorbtncancel.setBounds(68, 382, 168, 104);		
+		AddVendedorbtncancel.setBounds(85, 383, 145, 56);		
 		contentPane.add(AddVendedorbtncancel);
 		
 		JButton AddVendedorbtncreate = new JButton("Register");
-		AddVendedorbtncreate.setBackground(new Color(32, 178, 170));
-		AddVendedorbtncreate.setBounds(348, 383, 168, 104);
+		AddVendedorbtncreate.setForeground(Color.DARK_GRAY);
+		AddVendedorbtncreate.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		AddVendedorbtncreate.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
+		AddVendedorbtncreate.setBounds(348, 383, 145, 56);
 		AddVendedorbtncreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no register");

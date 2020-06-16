@@ -29,6 +29,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
+import javax.swing.UIManager;
 
 public class LoginPage extends JFrame {
 
@@ -77,19 +78,21 @@ public class LoginPage extends JFrame {
 		loginContainer.setLayout(null);
 		
 		username = new Placeholdertextfield();
-		username.setBounds(101, 147, 231, 19);
+		username.setBounds(101, 137, 231, 25);
 		username.setPlaceholder("Username");
 		username.setOpaque(true);
 		loginContainer.add(username);
 		username.setColumns(10);
 		
 		pwdField = new Placeholderpasswordfield();
-		pwdField.setBounds(101, 176, 231, 19);
+		pwdField.setBounds(101, 176, 231, 25);
 		loginContainer.add(pwdField);
 		pwdField.setOpaque(true);
 		pwdField.setPlaceholder("Password");
 		
 		JButton loginBtn = new JButton("Login");
+		loginBtn.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		loginBtn.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -101,7 +104,7 @@ public class LoginPage extends JFrame {
 			}
 		});
 		loginBtn.setAutoscrolls(true);
-		loginBtn.setBounds(144, 231, 150, 37);
+		loginBtn.setBounds(144, 231, 145, 56);
 		loginContainer.add(loginBtn);
 		
 		JLabel registerLbl = new JLabel("Not registered yet?");
@@ -124,7 +127,7 @@ public class LoginPage extends JFrame {
 			}
 		});
 		signin.setFont(new Font("Tahoma", Font.BOLD, 17));
-		signin.setBounds(288, 367, 80, 13);
+		signin.setBounds(285, 359, 80, 29);
 		loginContainer.add(signin);
 		
 		JLabel recover = new JLabel("Recover");
@@ -142,6 +145,7 @@ public class LoginPage extends JFrame {
 		
 		//imagem de fundo
 		JLabel lblbackgroundimage = new JLabel("");
+		lblbackgroundimage.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		lblbackgroundimage.setBounds(0,0,width,height);
 		//Marcos - não sei alterar o absolutepath para ir buscar o ficheiro que está dentro do projeto
 		lblbackgroundimage.setIcon(new ImageIcon(new ImageIcon("img\\POS.jpg").getImage().getScaledInstance(lblbackgroundimage.getWidth(), lblbackgroundimage.getHeight(), Image.SCALE_DEFAULT)));

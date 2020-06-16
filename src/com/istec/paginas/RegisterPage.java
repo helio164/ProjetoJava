@@ -29,6 +29,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 public class RegisterPage extends JFrame {
 	private int width = 923;
@@ -65,20 +67,20 @@ public class RegisterPage extends JFrame {
 		JPanel Logincontainer = new JPanel();
 		
 		Logincontainer.setBackground(new Color(204,204,204,150));
-		Logincontainer.setBounds(254, 164, 441, 514);
+		Logincontainer.setBounds(254, 165, 441, 514);
 		contentPane.add(Logincontainer);
 		Logincontainer.setLayout(null);
 		
 		
 		Placeholdertextfield CompanyName = new Placeholdertextfield();
-		CompanyName.setBounds(153, 124, 157, 20);
+		CompanyName.setBounds(99, 85, 231, 25);
 		CompanyName.setPlaceholder("Company Name");
 		CompanyName.setOpaque(true);
 		Logincontainer.add(CompanyName);
 		
 		
 		Placeholdertextfield VATNumber = new Placeholdertextfield();
-		VATNumber.setBounds(153, 155, 157, 20);
+		VATNumber.setBounds(99, 121, 231, 25);
 		VATNumber.setPlaceholder("VAT Number");
 		VATNumber.setOpaque(true);
 		Logincontainer.add(VATNumber);
@@ -87,14 +89,14 @@ public class RegisterPage extends JFrame {
 		
 		
 		Placeholdertextfield Username = new Placeholdertextfield();
-		Username.setBounds(153, 186, 157, 20);
+		Username.setBounds(99, 157, 231, 25);
 		Username.setPlaceholder("Username");
 		Username.setOpaque(true);
 		Logincontainer.add(Username);
 				
 		
 		Placeholdertextfield Email = new Placeholdertextfield();
-		Email.setBounds(153, 217, 157, 20);
+		Email.setBounds(99, 193, 231, 25);
 		Email.setPlaceholder("E-mail");
 		Email.setOpaque(true);
 		Logincontainer.add(Email);
@@ -102,7 +104,7 @@ public class RegisterPage extends JFrame {
 		
 		
 		Placeholderpasswordfield Password = new Placeholderpasswordfield();
-		Password.setBounds(153, 258, 157, 19);
+		Password.setBounds(99, 229, 231, 25);
 		Password.setOpaque(true);
 		Password.setPlaceholder("Password");
 		Logincontainer.add(Password);
@@ -110,22 +112,22 @@ public class RegisterPage extends JFrame {
 		
 		
 		Placeholderpasswordfield ConfirmPassword = new Placeholderpasswordfield();
-		ConfirmPassword.setBounds(153, 288, 157, 19);
+		ConfirmPassword.setBounds(99, 264, 231, 25);
 		ConfirmPassword.setOpaque(true);
 		ConfirmPassword.setPlaceholder("Confirm Password");
 		Logincontainer.add(ConfirmPassword);
 		
 		JComboBox cbxStoreType = new JComboBox();
 		cbxStoreType.setModel(new DefaultComboBoxModel<>(StoreType.values()));
-		cbxStoreType.setBounds(153, 317, 157, 21);
+		cbxStoreType.setBounds(137, 312, 157, 25);
 		Logincontainer.add(cbxStoreType);
 		
 		JButton BackAdmin = new JButton("Back");
 		BackAdmin.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		BackAdmin.setForeground(Color.DARK_GRAY);
-		BackAdmin.setBounds(27, 375, 168, 77);
+		BackAdmin.setBounds(44, 385, 145, 56);
 		Logincontainer.add(BackAdmin);
-		BackAdmin.setBackground(new Color(0, 255, 0));
+		BackAdmin.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		BackAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no Back");
@@ -135,11 +137,11 @@ public class RegisterPage extends JFrame {
 		});
 		
 		JButton RegisterAdmin = new JButton("Register");
-		RegisterAdmin.setFont(new Font("Tahoma", Font.ITALIC, 12));
+		RegisterAdmin.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		RegisterAdmin.setForeground(Color.DARK_GRAY);
-		RegisterAdmin.setBounds(260, 375, 157, 77);
+		RegisterAdmin.setBounds(251, 385, 145, 56);
 		Logincontainer.add(RegisterAdmin);
-		RegisterAdmin.setBackground(new Color(0, 255, 0));
+		RegisterAdmin.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		RegisterAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no Register");

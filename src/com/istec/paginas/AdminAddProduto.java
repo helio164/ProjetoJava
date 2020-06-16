@@ -27,6 +27,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import javax.swing.UIManager;
+import java.awt.Font;
 
 public class AdminAddProduto extends JFrame {
 
@@ -76,44 +78,48 @@ public class AdminAddProduto extends JFrame {
 		
 		//
 		Placeholdertextfield AdminAddDesignation = new Placeholdertextfield();
-		AdminAddDesignation.setBounds(176, 202, 231, 19);
+		AdminAddDesignation.setBounds(176, 183, 231, 25);
 		AdminAddDesignation.setPlaceholder("Designation");
 		AdminAddDesignation.setOpaque(true);
 		contentPane.add(AdminAddDesignation);
 		
 		Placeholdertextfield AdminAddCode = new Placeholdertextfield();
-		AdminAddCode.setBounds(176, 231, 231, 19);
+		AdminAddCode.setBounds(176, 219, 231, 25);
 		AdminAddCode.setPlaceholder("Code");
 		AdminAddCode.setOpaque(true);
 		contentPane.add(AdminAddCode);
 		
 		Placeholdertextfield AdminAddPrice = new Placeholdertextfield();
-		AdminAddPrice.setBounds(176, 260, 231, 19);
+		AdminAddPrice.setBounds(176, 255, 231, 25);
 		AdminAddPrice.setPlaceholder("Price");
 		AdminAddPrice.setOpaque(true);
 		contentPane.add(AdminAddPrice);
 		
 		Placeholdertextfield AdminAddType = new Placeholdertextfield();
-		AdminAddType.setBounds(176, 289, 231, 19);
+		AdminAddType.setBounds(176, 298, 231, 25);
 		AdminAddType.setPlaceholder("Type");
 		AdminAddType.setOpaque(true);
 		contentPane.add(AdminAddType);
 	
 		JButton Adminbtncancel = new JButton("Cancel");
-		Adminbtncancel.setBackground(new Color(32, 178, 170));
+		Adminbtncancel.setForeground(Color.DARK_GRAY);
+		Adminbtncancel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		Adminbtncancel.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		Adminbtncancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no cancel");
 				close();
 			}
 		});
-		Adminbtncancel.setBounds(68, 382, 168, 104);
+		Adminbtncancel.setBounds(85, 383, 145, 56);
 		
 		contentPane.add(Adminbtncancel);
 		
 		JButton Adminbtncreate = new JButton("Create");
-		Adminbtncreate.setBackground(new Color(32, 178, 170));
-		Adminbtncreate.setBounds(348, 383, 168, 104);
+		Adminbtncreate.setForeground(Color.DARK_GRAY);
+		Adminbtncreate.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		Adminbtncreate.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
+		Adminbtncreate.setBounds(343, 383, 145, 56);
 		Adminbtncreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no create");
