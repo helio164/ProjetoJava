@@ -96,7 +96,7 @@ public class AdminAddProduto extends JFrame {
 		contentPane.add(AdminAddPrice);
 		
 		Placeholdertextfield AdminAddType = new Placeholdertextfield();
-		AdminAddType.setBounds(176, 298, 231, 25);
+		AdminAddType.setBounds(176, 291, 231, 25);
 		AdminAddType.setPlaceholder("Type");
 		AdminAddType.setOpaque(true);
 		contentPane.add(AdminAddType);

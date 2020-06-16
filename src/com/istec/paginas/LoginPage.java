@@ -91,6 +91,7 @@ public class LoginPage extends JFrame {
 		pwdField.setPlaceholder("Password");
 		
 		JButton loginBtn = new JButton("Login");
+		loginBtn.setForeground(Color.DARK_GRAY);
 		loginBtn.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		loginBtn.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		loginBtn.addActionListener(new ActionListener() {
