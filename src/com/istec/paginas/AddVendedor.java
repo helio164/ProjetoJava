@@ -8,6 +8,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -30,6 +32,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+@SuppressWarnings({ "unused", "serial" })
 public class AddVendedor extends JFrame {
 
 	private JPanel contentPane;
@@ -62,30 +65,65 @@ public class AddVendedor extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblFotoVendedor = new JLabel("New label");
-		lblFotoVendedor.addMouseListener(new MouseAdapter() {
-			@Override
-			//Marcos inventou aqui cenas
-						
-			public void mouseClicked(MouseEvent e) {
-				final JFileChooser fc = new JFileChooser();
-				int returnVal = fc.showOpenDialog(fc);
-				String filePath = null;
-				if (returnVal == JFileChooser.APPROVE_OPTION) {
-					filePath = fc.getSelectedFile().getAbsolutePath();
-					
-				} else {
-					System.out.println("User clicked CANCEL");
-					System.exit(1);
-					
-				}
-				
-				new ChooseFile(filePath);
-				
-			}
-		});
-		lblFotoVendedor.setBounds(232, 52, 128, 113);
-		contentPane.add(lblFotoVendedor);
+//		JLabel lblFotoVendedor = new JLabel("New label");
+//		lblFotoVendedor.addMouseListener(new MouseAdapter() {
+//			@Override
+//			//Marcos inventou aqui cenas
+//						
+//			public void mouseClicked(MouseEvent e) {
+//				final JFileChooser fc = new JFileChooser();
+//				int returnVal = fc.showOpenDialog(fc);
+//				String filePath = null;
+//				if (returnVal == JFileChooser.APPROVE_OPTION) {
+//					filePath = fc.getSelectedFile().getAbsolutePath();
+//					
+//				} else {
+//					System.out.println("User clicked CANCEL");
+//					System.exit(1);
+//					
+//				}
+//				
+//				new ChooseFile(filePath);
+//				
+//			}
+//		});
+//		lblFotoVendedor.setBounds(232, 52, 128, 113);
+//		contentPane.add(lblFotoVendedor);
+		
+		    /**
+		     * Create the frame.
+		    */	  
+		JFileChooser fc = new JFileChooser();
+		        JLabel picPanel = new JLabel();
+		        JButton searchButton = new JButton("Search Picture");
+		        searchButton.addMouseListener(new MouseAdapter() {
+		            @Override
+		            public void mouseClicked(MouseEvent arg0) {
+		                FileFilter filter = new FileNameExtensionFilter("JPEG file", "jpg", "jpeg");
+		                fc.setFileFilter(filter);
+		                int response = fc.showOpenDialog(null);
+		                try {
+		                    if (response == JFileChooser.APPROVE_OPTION) {
+		                        String pathName = fc.getSelectedFile().getPath();
+		                        JOptionPane.showMessageDialog(null, pathName);
+		                        ImageIcon icon = new ImageIcon(pathName);
+		                        picPanel.setIcon(icon);
+		                    } else {
+		                        JOptionPane.showMessageDialog(null, "Feel Free to Look Later");
+		                    }
+		                } catch (Exception e) {
+		                    // TODO Auto-generated catch block
+		                    e.printStackTrace();
+		                }
+		            }
+		        });
+		        searchButton.setBounds(224, 10, 139, 23);
+		        contentPane.add(searchButton);
+		        picPanel.setBounds(151, 44, 267, 134);
+		        contentPane.add(picPanel);
+		    
+		
+		
 		
 		Placeholdertextfield AddVendedorUsername = new Placeholdertextfield();
 		AddVendedorUsername.setBounds(176, 202, 231, 19);
