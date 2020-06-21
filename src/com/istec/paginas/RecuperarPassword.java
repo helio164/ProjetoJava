@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.istec.componentes.Placeholdertextfield;
+import com.istec.objectos.Engine;
+import com.istec.objectos.User;
 
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -84,7 +86,9 @@ public class RecuperarPassword extends JFrame {
 		btnConfirm.setBackground(new Color(32, 178, 170));
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+				User u = Engine.getUserByEmail(Email.getText());
+				if(u!=null)
+					Engine.recoverPassword(u);				
 				close();
 			}
 		});
