@@ -68,14 +68,11 @@ public class RegisterPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel Logincontainer = new JPanel();
-		
+		JPanel Logincontainer = new JPanel();		
 		Logincontainer.setBackground(new Color(204,204,204,150));
 		Logincontainer.setBounds(254, 164, 441, 514);
 		contentPane.add(Logincontainer);
 		Logincontainer.setLayout(null);
-		
-		JFileChooser fc = new JFileChooser();
 		
 		
 		Placeholdertextfield CompanyName = new Placeholdertextfield();
@@ -92,8 +89,6 @@ public class RegisterPage extends JFrame {
 		Logincontainer.add(VATNumber);
 		
 		
-		
-		
 		Placeholdertextfield Username = new Placeholdertextfield();
 		Username.setBounds(153, 186, 157, 20);
 		Username.setPlaceholder("Username");
@@ -106,16 +101,14 @@ public class RegisterPage extends JFrame {
 		Email.setPlaceholder("E-mail");
 		Email.setOpaque(true);
 		Logincontainer.add(Email);
-		
-		
+				
 		
 		Placeholderpasswordfield Password = new Placeholderpasswordfield();
 		Password.setBounds(153, 258, 157, 19);
 		Password.setOpaque(true);
 		Password.setPlaceholder("Password");
 		Logincontainer.add(Password);
-		
-		
+				
 		
 		Placeholderpasswordfield ConfirmPassword = new Placeholderpasswordfield();
 		ConfirmPassword.setBounds(153, 288, 157, 19);
@@ -148,8 +141,11 @@ public class RegisterPage extends JFrame {
 		RegisterAdmin.setBounds(260, 375, 157, 77);
 		Logincontainer.add(RegisterAdmin);
 		RegisterAdmin.setBackground(new Color(0, 255, 0));
-		JLabel picPanel = new JLabel("Search Picture");
+		
+		JFileChooser fc = new JFileChooser();
+		JLabel picPanel = new JLabel("");
 		picPanel.setBounds(186, 44, 79, 63);
+		picPanel.setIcon(new ImageIcon(new ImageIcon("img\\add.png").getImage().getScaledInstance(picPanel.getWidth(), picPanel.getHeight(), Image.SCALE_DEFAULT)));
 		Logincontainer.add(picPanel);
 		picPanel.addMouseListener(new MouseAdapter() {
 		    @Override
@@ -172,6 +168,7 @@ public class RegisterPage extends JFrame {
 		        }
 		    }
 		});
+		
 		RegisterAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no Register");
