@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.istec.componentes.Placeholderpasswordfield;
 import com.istec.componentes.Placeholdertextfield;
@@ -27,11 +29,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class RegisterPage extends JFrame {
 	private int width = 923;
 	private int height = 777;
+	public String pathName = "";
 
 	private JPanel contentPane;
 	/**
@@ -54,6 +60,7 @@ public class RegisterPage extends JFrame {
 	 * Create the frame.
 	 */
 	public RegisterPage() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, width, height);
 		contentPane = new JPanel();
@@ -61,8 +68,7 @@ public class RegisterPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel Logincontainer = new JPanel();
-		
+		JPanel Logincontainer = new JPanel();		
 		Logincontainer.setBackground(new Color(204,204,204,150));
 		Logincontainer.setBounds(254, 164, 441, 514);
 		contentPane.add(Logincontainer);
@@ -83,8 +89,6 @@ public class RegisterPage extends JFrame {
 		Logincontainer.add(VATNumber);
 		
 		
-		
-		
 		Placeholdertextfield Username = new Placeholdertextfield();
 		Username.setBounds(153, 186, 157, 20);
 		Username.setPlaceholder("Username");
@@ -97,16 +101,14 @@ public class RegisterPage extends JFrame {
 		Email.setPlaceholder("E-mail");
 		Email.setOpaque(true);
 		Logincontainer.add(Email);
-		
-		
+				
 		
 		Placeholderpasswordfield Password = new Placeholderpasswordfield();
 		Password.setBounds(153, 258, 157, 19);
 		Password.setOpaque(true);
 		Password.setPlaceholder("Password");
 		Logincontainer.add(Password);
-		
-		
+				
 		
 		Placeholderpasswordfield ConfirmPassword = new Placeholderpasswordfield();
 		ConfirmPassword.setBounds(153, 288, 157, 19);
@@ -120,9 +122,11 @@ public class RegisterPage extends JFrame {
 		Logincontainer.add(cbxStoreType);
 		
 		JButton BackAdmin = new JButton("Back");
+		BackAdmin.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		BackAdmin.setForeground(Color.DARK_GRAY);
 		BackAdmin.setBounds(27, 375, 168, 77);
 		Logincontainer.add(BackAdmin);
-		BackAdmin.setBackground(new Color(32, 178, 170));
+		BackAdmin.setBackground(new Color(0, 255, 0));
 		BackAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no Back");
@@ -132,9 +136,39 @@ public class RegisterPage extends JFrame {
 		});
 		
 		JButton RegisterAdmin = new JButton("Register");
+		RegisterAdmin.setFont(new Font("Tahoma", Font.ITALIC, 12));
+		RegisterAdmin.setForeground(Color.DARK_GRAY);
 		RegisterAdmin.setBounds(260, 375, 157, 77);
 		Logincontainer.add(RegisterAdmin);
-		RegisterAdmin.setBackground(new Color(32, 178, 170));
+		RegisterAdmin.setBackground(new Color(0, 255, 0));
+		
+		JFileChooser fc = new JFileChooser();
+		JLabel picPanel = new JLabel("");
+		picPanel.setBounds(186, 44, 79, 63);
+		picPanel.setIcon(new ImageIcon(new ImageIcon("img\\add.png").getImage().getScaledInstance(picPanel.getWidth(), picPanel.getHeight(), Image.SCALE_DEFAULT)));
+		Logincontainer.add(picPanel);
+		picPanel.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent arg0) {
+		        FileFilter filter = new FileNameExtensionFilter("JPEG file", "jpg", "jpeg", "png");
+		        fc.setFileFilter(filter);
+		        int response = fc.showOpenDialog(null);
+		        try {
+		            if (response == JFileChooser.APPROVE_OPTION) {
+		                pathName = fc.getSelectedFile().getPath();
+		                JOptionPane.showMessageDialog(null, pathName);
+		                ImageIcon icon = new ImageIcon(pathName);
+		                picPanel.setIcon(icon);
+		            } else {
+		                JOptionPane.showMessageDialog(null, "Feel Free to Look Later");
+		            }
+		        } catch (Exception e) {
+		            // TODO Auto-generated catch block
+		            e.printStackTrace();
+		        }
+		    }
+		});
+		
 		RegisterAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no Register");
@@ -146,11 +180,13 @@ public class RegisterPage extends JFrame {
 							new Admin(
 									Username.getText(),
 									Email.getText(),
-									Password.getText()
+									Password.getText(),
+									(pathName.isEmpty()?"img\\user.png":pathName)
 									)
 							);
 					if(Engine.register(newStore)) {
 						JOptionPane.showMessageDialog(null, "Registo adicionado COM sucesso!");
+						new LoginPage();
 						close();
 					} else {
 						JOptionPane.showMessageDialog(null, "Vendedor adicionado SEM sucesso!");

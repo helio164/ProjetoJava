@@ -38,8 +38,8 @@ public class GridOfProducts extends JTabbedPane {
 		
 		ArrayList<String> types = new ArrayList<String>();
 		for(Product p : Engine.currentStore.products) {
-			if(!types.contains(p.Type)) {
-				types.add(p.Type);
+			if(!types.contains(p.Type.toUpperCase())) {
+				types.add(p.Type.toUpperCase());
 			}
 		}
 		
@@ -52,12 +52,13 @@ public class GridOfProducts extends JTabbedPane {
 				PItem product = new PItem(p);				
 				product.setBounds(new Rectangle(100, 100));
 				product.setToolTipText(p.Designation+" - \n"+p.Price+"€");
-				product.setIcon(new ImageIcon(new ImageIcon("img\\product.png").getImage().getScaledInstance(product.getWidth(), product.getHeight(), Image.SCALE_DEFAULT)));
+				product.setIcon(new ImageIcon(new ImageIcon(p.Image).getImage().getScaledInstance(product.getWidth(), product.getHeight(), Image.SCALE_DEFAULT)));
 				product.addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
 						if(page.equals("SALES")) {
 							PItem p = (PItem)e.getSource();
-							JOptionPane.showMessageDialog(null,"Product "+ p.obj.Designation +" added");
+							Engine.addProductToSale(p.obj);
+							JOptionPane.showMessageDialog(null,"Buy product "+ p.obj.Designation +", price: "+p.obj.Price.toString());
 						}else {
 							JOptionPane.showMessageDialog(null,"Page is admin");
 						}

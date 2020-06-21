@@ -12,6 +12,8 @@ public class Sale implements Serializable {
 	
 	public Sale() {
 		// TODO Auto-generated constructor stub
+		this.products = new ArrayList<Product>();
+		
 	}
 
 }

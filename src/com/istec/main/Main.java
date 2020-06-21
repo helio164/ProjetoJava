@@ -29,7 +29,7 @@ public class Main {
 	
 	public static void TestRegister() {
 		//Admin admin = new Admin("username", "email", "123");
-		Admin admin = new Admin("lolada", "email", "123");
+		Admin admin = new Admin("lolada", "email", "123", "img\\user.png");
 		//Store store = new Store("Loja Mágica", "123456789", StoreType.OTHER, admin);
 		Store store = new Store("Loja2", "123456", StoreType.FOOD, admin);
 		
