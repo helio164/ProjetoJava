@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.istec.componentes.Placeholdertextfield;
+import com.istec.objectos.Engine;
+import com.istec.objectos.User;
 
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -26,6 +28,7 @@ public class RecuperarPassword extends JFrame {
 	private JPanel contentPane;	
 	private int width = 923;
 	private int height = 777;
+	public Placeholdertextfield Email;
 
 	/**
 	 * Launch the application.
@@ -68,8 +71,8 @@ public class RecuperarPassword extends JFrame {
 		lblTitulo.setBounds(67, 36, 276, 66);
 		loginContainer.add(lblTitulo);
 		
-		Placeholdertextfield Email = new Placeholdertextfield();
-		Email.setBounds(92, 148, 231, 25);
+		Email = new Placeholdertextfield();
+		Email.setBounds(132, 148, 145, 20);
 		loginContainer.add(Email);
 		Email.setPlaceholder("E-mail");
 		Email.setOpaque(true);
@@ -91,7 +94,9 @@ public class RecuperarPassword extends JFrame {
 		btnConfirm.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+				User u = Engine.getUserByEmail(Email.getText());
+				if(u!=null)
+					Engine.recoverPassword(u);				
 				close();
 			}
 		});
@@ -115,5 +120,16 @@ public class RecuperarPassword extends JFrame {
 	
 	public void close(){
 		this.dispose();
+	}
+	public Boolean fieldValidation() {
+		Boolean result = true;
+		
+			if (Email.getText().equals("")){ /* verifica se o campos esta vazio */
+				Email.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				Email.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+			return result;
 	}
 }

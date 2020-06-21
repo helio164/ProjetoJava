@@ -8,6 +8,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -26,6 +28,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -34,10 +38,17 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings({ "unused", "serial" })
 public class AddVendedor extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	public String pathName = "";
+	public Placeholdertextfield AddVendedorUsername;
+	public Placeholdertextfield AddVendedorEmail;
+	public Placeholderpasswordfield AddVendedorPassword;
+	public Placeholderpasswordfield AddVendedorConfirmPassword;
+	
 
 	/**
 	 * Launch the application.
@@ -66,51 +77,87 @@ public class AddVendedor extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblFotoVendedor = new JLabel("New label");
-		lblFotoVendedor.addMouseListener(new MouseAdapter() {
-			@Override
-			//Marcos inventou aqui cenas
-						
-			public void mouseClicked(MouseEvent e) {
-				final JFileChooser fc = new JFileChooser();
-				int returnVal = fc.showOpenDialog(fc);
-				String filePath = null;
-				if (returnVal == JFileChooser.APPROVE_OPTION) {
-					filePath = fc.getSelectedFile().getAbsolutePath();
-					
-				} else {
-					System.out.println("User clicked CANCEL");
-					System.exit(1);
-					
-				}
-				
-				new ChooseFile(filePath);
-				
-			}
-		});
-		lblFotoVendedor.setBounds(232, 52, 128, 113);
-		contentPane.add(lblFotoVendedor);
 		
-		Placeholdertextfield AddVendedorUsername = new Placeholdertextfield();
-		AddVendedorUsername.setBounds(176, 189, 231, 25);
+
+//		JLabel lblFotoVendedor = new JLabel("New label");
+//		lblFotoVendedor.addMouseListener(new MouseAdapter() {
+//			@Override
+//			//Marcos inventou aqui cenas
+//						
+//			public void mouseClicked(MouseEvent e) {
+//				final JFileChooser fc = new JFileChooser();
+//				int returnVal = fc.showOpenDialog(fc);
+//				String filePath = null;
+//				if (returnVal == JFileChooser.APPROVE_OPTION) {
+//					filePath = fc.getSelectedFile().getAbsolutePath();
+//					
+//				} else {
+//					System.out.println("User clicked CANCEL");
+//					System.exit(1);
+//					
+//				}
+//				
+//				new ChooseFile(filePath);
+//				
+//			}
+//		});
+//		lblFotoVendedor.setBounds(232, 52, 128, 113);
+//		contentPane.add(lblFotoVendedor);
+		
+		    /**
+		     * Create the frame.
+		    */	  
+		JFileChooser fc = new JFileChooser();
+        JLabel picPanel = new JLabel("");
+        picPanel.setBounds(238, 50, 113, 104);
+        picPanel.setHorizontalAlignment(SwingConstants.CENTER);
+        picPanel.setIcon(new ImageIcon(new ImageIcon("img\\add.png").getImage().getScaledInstance(picPanel.getWidth(), picPanel.getHeight(), Image.SCALE_DEFAULT)));
+        picPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                FileFilter filter = new FileNameExtensionFilter("JPEG file", "jpg", "jpeg", "png");
+                fc.setFileFilter(filter);
+                int response = fc.showOpenDialog(null);
+                try {
+                    if (response == JFileChooser.APPROVE_OPTION) {
+                        pathName = fc.getSelectedFile().getPath();
+                        JOptionPane.showMessageDialog(null, pathName);
+                        //ImageIcon icon = new ImageIcon(pathName);
+                        picPanel.setIcon(new ImageIcon(new ImageIcon(pathName).getImage().getScaledInstance(picPanel.getWidth(), picPanel.getHeight(), Image.SCALE_DEFAULT)));
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Feel Free to Look Later");
+                    }
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
+        picPanel.setBounds(151, 22, 267, 156);
+        contentPane.add(picPanel);
+		
+		
+		AddVendedorUsername = new Placeholdertextfield();
+		AddVendedorUsername.setBounds(176, 202, 231, 19);
 		AddVendedorUsername.setPlaceholder("Username");
 		AddVendedorUsername.setOpaque(true);
 		contentPane.add(AddVendedorUsername);
 		
-		Placeholdertextfield AddVendedorEmail = new Placeholdertextfield();
-		AddVendedorEmail.setBounds(176, 225, 231, 25);
+		AddVendedorEmail = new Placeholdertextfield();
+		AddVendedorEmail.setBounds(176, 231, 231, 19);
 		AddVendedorEmail.setPlaceholder("email");
 		AddVendedorEmail.setOpaque(true);
 		contentPane.add(AddVendedorEmail);
 		
-		Placeholderpasswordfield AddVendedorPassword = new Placeholderpasswordfield();
-		AddVendedorPassword.setBounds(176, 260, 231, 25);
+		AddVendedorPassword = new Placeholderpasswordfield();
+		AddVendedorPassword.setBounds(176, 260, 231, 19);
 		AddVendedorPassword.setPlaceholder("password");
 		AddVendedorPassword.setOpaque(true);
 		contentPane.add(AddVendedorPassword);
 		
-		Placeholderpasswordfield AddVendedorConfirmPassword = new Placeholderpasswordfield();
-		AddVendedorConfirmPassword.setBounds(176, 298, 231, 25);
+
+		AddVendedorConfirmPassword = new Placeholderpasswordfield();
+		AddVendedorConfirmPassword.setBounds(176, 289, 231, 19);
 		AddVendedorConfirmPassword.setPlaceholder("Confirm Password");
 		AddVendedorConfirmPassword.setOpaque(true);
 		contentPane.add(AddVendedorConfirmPassword);
@@ -135,16 +182,15 @@ public class AddVendedor extends JFrame {
 		AddVendedorbtncreate.setBounds(348, 383, 145, 56);
 		AddVendedorbtncreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//JOptionPane.showMessageDialog(null, "carregaste no register");
-				
-				if(Engine.addVendedor(
-						new Vendedor(AddVendedorUsername.getText(),AddVendedorEmail.getText(),AddVendedorPassword.getText()))
-				) {
-					JOptionPane.showMessageDialog(null, "Vendedor adicionado COM sucesso!");
-					close();
-				} else {
-					JOptionPane.showMessageDialog(null, "Vendedor adicionado SEM sucesso!");
-				}
+				//JOptionPane.showMessageDialog(null, "carregaste no register");				
+					if(Engine.addVendedor(
+							new Vendedor(AddVendedorUsername.getText(),AddVendedorEmail.getText(),AddVendedorPassword.getText(), (pathName.isEmpty()?"img\\user.png":pathName)))
+					) {
+						JOptionPane.showMessageDialog(null, "Vendedor adicionado COM sucesso!");
+						close();
+					} else {
+						JOptionPane.showMessageDialog(null, "Vendedor adicionado SEM sucesso!");
+					}
 			}
 		});
 		contentPane.add(AddVendedorbtncreate);
@@ -153,6 +199,38 @@ public class AddVendedor extends JFrame {
 	}
 	public void close(){
 		this.dispose();
+	}
+	public Boolean fieldValidation() {
+		Boolean result = true;
+		
+			if (AddVendedorUsername.getText().equals("")){ /* verifica se o campos esta vazio */
+				AddVendedorUsername.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				AddVendedorUsername.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+			
+			if (AddVendedorEmail.getText().equals("")){ /* verifica se o campos esta vazio */
+				AddVendedorEmail.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				AddVendedorEmail.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+			
+			if (AddVendedorPassword.getText().equals("")){ /* verifica se o campos esta vazio */
+				AddVendedorPassword.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				AddVendedorPassword.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+			
+			if (AddVendedorConfirmPassword.getText().equals("")){ /* verifica se o campos esta vazio */
+				AddVendedorConfirmPassword.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				AddVendedorConfirmPassword.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+		return result;
 	}
 }
 

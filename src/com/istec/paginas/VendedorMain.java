@@ -80,6 +80,7 @@ public class VendedorMain extends JFrame {
 		addWindowFocusListener(new WindowFocusListener() {
 			public void windowGainedFocus(WindowEvent e) {
 				listOfSales.loadSales();
+				
 			}
 			public void windowLostFocus(WindowEvent e) {
 			}

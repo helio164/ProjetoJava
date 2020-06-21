@@ -9,8 +9,17 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import com.istec.paginas.AdminMain;
+import com.istec.paginas.VendedorMain;
 
 public class Engine implements Serializable {
 	private static String filename = "data.data";
@@ -73,6 +82,8 @@ public class Engine implements Serializable {
 							result = ("Login successful: "+user.username);
 							if(store.admin == user) {
 								new AdminMain();
+							}else {
+								new VendedorMain();
 							}
 							return true;
 						}else {
@@ -111,7 +122,68 @@ public class Engine implements Serializable {
 		System.out.println("Logout successful");
 	}
 
+	public static void recoverPassword(User user) {
+		 // Recipient's email ID needs to be mentioned.
+	      String to = user.email;
 
+	      // Sender's email ID needs to be mentioned
+	      String from = "projetojava.istec@gmail.com";
+
+	      // Assuming you are sending email from localhost
+	      String host = "smtp.gmail.com";
+
+	      // Get system properties
+	      Properties properties = System.getProperties();
+
+	      // Setup mail server
+	      properties.setProperty("mail.smtp.host", host);
+	      properties.put("mail.smtp.port", "465");
+	      properties.put("mail.smtp.ssl.enable", "true");
+	      properties.put("mail.smtp.auth", "true");
+
+	      // Get the Session object.// and pass username and password
+	      Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+
+	          protected PasswordAuthentication getPasswordAuthentication() {
+
+	              return new PasswordAuthentication("projetojava.istec@gmail.com", "J@v@C@f3");
+	          }
+	      });
+
+	      
+	      // Used to debug SMTP issues
+	      session.setDebug(true);
+
+	      try {
+	         // Create a default MimeMessage object.
+	         MimeMessage message = new MimeMessage(session);
+
+	         // Set From: header field of the header.
+	         message.setFrom(new InternetAddress(from));
+
+	         // Set To: header field of the header.
+	         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+	         // Set Subject: header field
+	         message.setSubject("Recover your password!");
+
+	         // Send the actual HTML message, as big as you like
+	         message.setContent(
+	        		 "<h1>Hello "+user.username+"!</h1>"+
+	        		 "<p>We notice you forgot your password.</p>"+
+	        		 "<p>Your password is: <strong>"+user.password+"</strong></p>"+
+	        		 "<p>Best regards!</p>"
+	        		 ,"text/html");
+
+	         // Send message
+	         Transport.send(message);
+	         System.out.println("Sent message successfully....");
+	      } catch (Exception ex) {
+	         ex.printStackTrace();
+	      }
+	      /**/
+	}
+	
 	//Vendedor stuff
 	public static Boolean addVendedor(Vendedor vendedor) {
 		
@@ -131,6 +203,24 @@ public class Engine implements Serializable {
 		return false;
 	}
 	
+	public static User getUserByEmail(String email) {		
+			try {
+				for(Store store : stores) {
+					for(User user: store.users) {
+						if(user.email.equalsIgnoreCase(email)) {
+							return user;
+						}
+					}
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				System.out.println("ERRO");
+				//e.printStackTrace();			
+			}
+			
+			
+		return null;
+	}
 	
 	//Product stuff
 	public static boolean addProduct(Product product) {

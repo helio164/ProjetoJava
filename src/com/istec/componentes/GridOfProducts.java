@@ -52,7 +52,7 @@ public class GridOfProducts extends JTabbedPane {
 				PItem product = new PItem(p);				
 				product.setBounds(new Rectangle(100, 100));
 				product.setToolTipText(p.Designation+" - \n"+p.Price+"€");
-				product.setIcon(new ImageIcon(new ImageIcon("img\\product.png").getImage().getScaledInstance(product.getWidth(), product.getHeight(), Image.SCALE_DEFAULT)));
+				product.setIcon(new ImageIcon(new ImageIcon(p.Image).getImage().getScaledInstance(product.getWidth(), product.getHeight(), Image.SCALE_DEFAULT)));
 				product.addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
 						if(page.equals("SALES")) {
