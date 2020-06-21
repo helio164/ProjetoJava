@@ -21,7 +21,7 @@ public class Store implements Serializable {
 		this.products = new ArrayList<Product>();
 		this.sales = new ArrayList<Sale>();
 		this.users = new ArrayList<User>();
-			users.add(admin);	
+			 users.add(admin);	
 	}
 	
 	
