@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.istec.paginas.AdminMain;
+import com.istec.paginas.VendedorMain;
 
 public class Engine implements Serializable {
 	private static String filename = "data.data";
@@ -73,6 +74,8 @@ public class Engine implements Serializable {
 							result = ("Login successful: "+user.username);
 							if(store.admin == user) {
 								new AdminMain();
+							}else {
+								new VendedorMain();
 							}
 							return true;
 						}else {

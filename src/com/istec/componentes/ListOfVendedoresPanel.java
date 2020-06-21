@@ -38,7 +38,7 @@ public class ListOfVendedoresPanel extends JPanel {
 			Border border = BorderFactory.createLineBorder(Color.BLACK, 0);
 			label.setBorder(border);
 			label.setToolTipText(u.username);
-			label.setIcon(new ImageIcon(new ImageIcon("img\\user.png").getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT)));
+			label.setIcon(new ImageIcon(new ImageIcon(u.image).getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT)));
 			label.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
