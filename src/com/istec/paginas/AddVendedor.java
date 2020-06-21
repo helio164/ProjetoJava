@@ -40,6 +40,11 @@ public class AddVendedor extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	public String pathName = "";
+	public Placeholdertextfield AddVendedorUsername;
+	public Placeholdertextfield AddVendedorEmail;
+	public Placeholderpasswordfield AddVendedorPassword;
+	public Placeholderpasswordfield AddVendedorConfirmPassword;
+	
 
 	/**
 	 * Launch the application.
@@ -127,25 +132,25 @@ public class AddVendedor extends JFrame {
         contentPane.add(picPanel);
 		
 		
-		Placeholdertextfield AddVendedorUsername = new Placeholdertextfield();
+		AddVendedorUsername = new Placeholdertextfield();
 		AddVendedorUsername.setBounds(176, 202, 231, 19);
 		AddVendedorUsername.setPlaceholder("Username");
 		AddVendedorUsername.setOpaque(true);
 		contentPane.add(AddVendedorUsername);
 		
-		Placeholdertextfield AddVendedorEmail = new Placeholdertextfield();
+		AddVendedorEmail = new Placeholdertextfield();
 		AddVendedorEmail.setBounds(176, 231, 231, 19);
 		AddVendedorEmail.setPlaceholder("email");
 		AddVendedorEmail.setOpaque(true);
 		contentPane.add(AddVendedorEmail);
 		
-		Placeholderpasswordfield AddVendedorPassword = new Placeholderpasswordfield();
+		AddVendedorPassword = new Placeholderpasswordfield();
 		AddVendedorPassword.setBounds(176, 260, 231, 19);
 		AddVendedorPassword.setPlaceholder("password");
 		AddVendedorPassword.setOpaque(true);
 		contentPane.add(AddVendedorPassword);
 		
-		Placeholderpasswordfield AddVendedorConfirmPassword = new Placeholderpasswordfield();
+		AddVendedorConfirmPassword = new Placeholderpasswordfield();
 		AddVendedorConfirmPassword.setBounds(176, 289, 231, 19);
 		AddVendedorConfirmPassword.setPlaceholder("Confirm Password");
 		AddVendedorConfirmPassword.setOpaque(true);
@@ -184,6 +189,38 @@ public class AddVendedor extends JFrame {
 	}
 	public void close(){
 		this.dispose();
+	}
+	public Boolean fieldValidation() {
+		Boolean result = true;
+		
+			if (AddVendedorUsername.getText().equals("")){ /* verifica se o campos esta vazio */
+				AddVendedorUsername.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				AddVendedorUsername.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+			
+			if (AddVendedorEmail.getText().equals("")){ /* verifica se o campos esta vazio */
+				AddVendedorEmail.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				AddVendedorEmail.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+			
+			if (AddVendedorPassword.getText().equals("")){ /* verifica se o campos esta vazio */
+				AddVendedorPassword.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				AddVendedorPassword.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+			
+			if (AddVendedorConfirmPassword.getText().equals("")){ /* verifica se o campos esta vazio */
+				AddVendedorConfirmPassword.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				AddVendedorConfirmPassword.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+		return result;
 	}
 }
 

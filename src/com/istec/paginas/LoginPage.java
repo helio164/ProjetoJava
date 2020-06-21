@@ -143,7 +143,7 @@ public class LoginPage extends JFrame {
 		//imagem de fundo
 		JLabel lblbackgroundimage = new JLabel("");
 		lblbackgroundimage.setBounds(0,0,width,height);
-		//Marcos - n„o sei alterar o absolutepath para ir buscar o ficheiro que est· dentro do projeto
+		//Marcos - n√£o sei alterar o absolutepath para ir buscar o ficheiro que est√° dentro do projeto
 		lblbackgroundimage.setIcon(new ImageIcon(new ImageIcon("img\\POS.jpg").getImage().getScaledInstance(lblbackgroundimage.getWidth(), lblbackgroundimage.getHeight(), Image.SCALE_DEFAULT)));
 		contentPane.add(lblbackgroundimage, BorderLayout.NORTH);
 		
@@ -153,5 +153,16 @@ public class LoginPage extends JFrame {
 	
 	public void close(){
 		this.dispose();
+	}
+	public Boolean fieldValidation() {
+		Boolean result = true;
+		
+			if (Email.getText().equals("")){ /* verifica se o campos esta vazio */
+				Email.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				Email.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+			return result;
 	}
 }
