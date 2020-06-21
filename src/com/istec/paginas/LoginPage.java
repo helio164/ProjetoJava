@@ -78,14 +78,14 @@ public class LoginPage extends JFrame {
 		loginContainer.setLayout(null);
 		
 		username = new Placeholdertextfield();
-		username.setBounds(101, 137, 231, 25);
+		username.setBounds(101, 137, 230, 25);
 		username.setPlaceholder("Username");
 		username.setOpaque(true);
 		loginContainer.add(username);
 		username.setColumns(10);
 		
 		pwdField = new Placeholderpasswordfield();
-		pwdField.setBounds(101, 176, 231, 25);
+		pwdField.setBounds(101, 176, 230, 25);
 		loginContainer.add(pwdField);
 		pwdField.setOpaque(true);
 		pwdField.setPlaceholder("Password");
@@ -105,7 +105,7 @@ public class LoginPage extends JFrame {
 			}
 		});
 		loginBtn.setAutoscrolls(true);
-		loginBtn.setBounds(144, 231, 145, 56);
+		loginBtn.setBounds(135, 247, 145, 56);
 		loginContainer.add(loginBtn);
 		
 		JLabel registerLbl = new JLabel("Not registered yet?");

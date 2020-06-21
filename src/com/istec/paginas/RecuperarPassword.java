@@ -72,7 +72,7 @@ public class RecuperarPassword extends JFrame {
 		loginContainer.add(lblTitulo);
 		
 		Email = new Placeholdertextfield();
-		Email.setBounds(132, 148, 145, 20);
+		Email.setBounds(92, 148, 230, 25);
 		loginContainer.add(Email);
 		Email.setPlaceholder("E-mail");
 		Email.setOpaque(true);

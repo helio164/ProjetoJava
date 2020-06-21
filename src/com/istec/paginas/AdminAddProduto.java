@@ -120,25 +120,25 @@ public class AdminAddProduto extends JFrame {
 		//
 
 		AdminAddDesignation = new Placeholdertextfield();
-		AdminAddDesignation.setBounds(176, 202, 231, 19);
+		AdminAddDesignation.setBounds(176, 175, 230, 25);
 		AdminAddDesignation.setPlaceholder("Designation");
 		AdminAddDesignation.setOpaque(true);
 		contentPane.add(AdminAddDesignation);
 		
 		AdminAddCode = new Placeholdertextfield();
-		AdminAddCode.setBounds(176, 231, 231, 19);
+		AdminAddCode.setBounds(176, 211, 230, 25);
 		AdminAddCode.setPlaceholder("Code");
 		AdminAddCode.setOpaque(true);
 		contentPane.add(AdminAddCode);
 		
 		AdminAddPrice = new Placeholdertextfield();
-		AdminAddPrice.setBounds(176, 260, 231, 19);
+		AdminAddPrice.setBounds(176, 247, 230, 25);
 		AdminAddPrice.setPlaceholder("Price");
 		AdminAddPrice.setOpaque(true);
 		contentPane.add(AdminAddPrice);
 		
 		AdminAddType = new Placeholdertextfield();
-		AdminAddType.setBounds(176, 289, 231, 19);
+		AdminAddType.setBounds(176, 283, 230, 25);
 		AdminAddType.setPlaceholder("Type");
 		AdminAddType.setOpaque(true);
 		contentPane.add(AdminAddType);
@@ -153,7 +153,7 @@ public class AdminAddProduto extends JFrame {
 				close();
 			}
 		});
-		Adminbtncancel.setBounds(85, 383, 145, 56);
+		Adminbtncancel.setBounds(106, 365, 145, 56);
 		
 		contentPane.add(Adminbtncancel);
 		
@@ -161,7 +161,7 @@ public class AdminAddProduto extends JFrame {
 		Adminbtncreate.setForeground(Color.DARK_GRAY);
 		Adminbtncreate.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		Adminbtncreate.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
-		Adminbtncreate.setBounds(343, 383, 145, 56);
+		Adminbtncreate.setBounds(330, 365, 145, 56);
 		Adminbtncreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no create");

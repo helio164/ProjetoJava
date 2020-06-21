@@ -109,7 +109,7 @@ public class AddVendedor extends JFrame {
 		    */	  
 		JFileChooser fc = new JFileChooser();
         JLabel picPanel = new JLabel("");
-        picPanel.setBounds(238, 50, 113, 104);
+        picPanel.setBounds(151, 22, 113, 104);
         picPanel.setHorizontalAlignment(SwingConstants.CENTER);
         picPanel.setIcon(new ImageIcon(new ImageIcon("img\\add.png").getImage().getScaledInstance(picPanel.getWidth(), picPanel.getHeight(), Image.SCALE_DEFAULT)));
         picPanel.addMouseListener(new MouseAdapter() {
@@ -138,26 +138,26 @@ public class AddVendedor extends JFrame {
 		
 		
 		AddVendedorUsername = new Placeholdertextfield();
-		AddVendedorUsername.setBounds(176, 202, 231, 19);
+		AddVendedorUsername.setBounds(176, 178, 230, 25);
 		AddVendedorUsername.setPlaceholder("Username");
 		AddVendedorUsername.setOpaque(true);
 		contentPane.add(AddVendedorUsername);
 		
 		AddVendedorEmail = new Placeholdertextfield();
-		AddVendedorEmail.setBounds(176, 231, 231, 19);
-		AddVendedorEmail.setPlaceholder("email");
+		AddVendedorEmail.setBounds(176, 214, 230, 25);
+		AddVendedorEmail.setPlaceholder("Email");
 		AddVendedorEmail.setOpaque(true);
 		contentPane.add(AddVendedorEmail);
 		
 		AddVendedorPassword = new Placeholderpasswordfield();
-		AddVendedorPassword.setBounds(176, 260, 231, 19);
-		AddVendedorPassword.setPlaceholder("password");
+		AddVendedorPassword.setBounds(176, 250, 230, 25);
+		AddVendedorPassword.setPlaceholder("Password");
 		AddVendedorPassword.setOpaque(true);
 		contentPane.add(AddVendedorPassword);
 		
 
 		AddVendedorConfirmPassword = new Placeholderpasswordfield();
-		AddVendedorConfirmPassword.setBounds(176, 289, 231, 19);
+		AddVendedorConfirmPassword.setBounds(176, 286, 230, 25);
 		AddVendedorConfirmPassword.setPlaceholder("Confirm Password");
 		AddVendedorConfirmPassword.setOpaque(true);
 		contentPane.add(AddVendedorConfirmPassword);
@@ -172,14 +172,14 @@ public class AddVendedor extends JFrame {
 				close();
 			}
 		});
-		AddVendedorbtncancel.setBounds(85, 383, 145, 56);		
+		AddVendedorbtncancel.setBounds(106, 365, 145, 56);		
 		contentPane.add(AddVendedorbtncancel);
 		
 		JButton AddVendedorbtncreate = new JButton("Register");
 		AddVendedorbtncreate.setForeground(Color.DARK_GRAY);
 		AddVendedorbtncreate.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		AddVendedorbtncreate.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
-		AddVendedorbtncreate.setBounds(348, 383, 145, 56);
+		AddVendedorbtncreate.setBounds(330, 365, 145, 56);
 		AddVendedorbtncreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no register");				

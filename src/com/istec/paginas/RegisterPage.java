@@ -87,49 +87,49 @@ public class RegisterPage extends JFrame {
 		
 		
 		CompanyName = new Placeholdertextfield();
-		CompanyName.setBounds(153, 124, 157, 20);
+		CompanyName.setBounds(98, 105, 230, 25);
 		CompanyName.setPlaceholder("Company Name");
 		CompanyName.setOpaque(true);
 		Logincontainer.add(CompanyName);
 		
 		
 		VATNumber = new Placeholdertextfield();
-		VATNumber.setBounds(153, 155, 157, 20);
+		VATNumber.setBounds(98, 141, 230, 25);
 		VATNumber.setPlaceholder("VAT Number");
 		VATNumber.setOpaque(true);
 		Logincontainer.add(VATNumber);
 		
 		
 		Username = new Placeholdertextfield();
-		Username.setBounds(153, 186, 157, 20);
+		Username.setBounds(98, 177, 230, 25);
 		Username.setPlaceholder("Username");
 		Username.setOpaque(true);
 		Logincontainer.add(Username);
 				
 		
 		Email = new Placeholdertextfield();
-		Email.setBounds(153, 217, 157, 20);
+		Email.setBounds(98, 213, 230, 25);
 		Email.setPlaceholder("E-mail");
 		Email.setOpaque(true);
 		Logincontainer.add(Email);
 				
 		
 		Password = new Placeholderpasswordfield();
-		Password.setBounds(153, 258, 157, 19);
+		Password.setBounds(98, 249, 230, 25);
 		Password.setOpaque(true);
 		Password.setPlaceholder("Password");
 		Logincontainer.add(Password);
 				
 		
 		ConfirmPassword = new Placeholderpasswordfield();
-		ConfirmPassword.setBounds(153, 288, 157, 19);
+		ConfirmPassword.setBounds(98, 285, 230, 25);
 		ConfirmPassword.setOpaque(true);
 		ConfirmPassword.setPlaceholder("Confirm Password");
 		Logincontainer.add(ConfirmPassword);
 		
 		JComboBox cbxStoreType = new JComboBox();
 		cbxStoreType.setModel(new DefaultComboBoxModel<>(StoreType.values()));
-		cbxStoreType.setBounds(137, 312, 157, 25);
+		cbxStoreType.setBounds(130, 328, 157, 25);
 		Logincontainer.add(cbxStoreType);
 		
 		JButton BackAdmin = new JButton("Back");
