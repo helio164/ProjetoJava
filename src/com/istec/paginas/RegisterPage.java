@@ -43,6 +43,12 @@ public class RegisterPage extends JFrame {
 	private int width = 923;
 	private int height = 777;
 	public String pathName = "";
+	public Placeholdertextfield CompanyName;
+	public Placeholdertextfield VATNumber;
+	public Placeholdertextfield Username;
+	public Placeholdertextfield Email;
+	public Placeholderpasswordfield Password;
+	public Placeholderpasswordfield ConfirmPassword;	
 
 	private JPanel contentPane;
 	/**
@@ -80,43 +86,43 @@ public class RegisterPage extends JFrame {
 		Logincontainer.setLayout(null);
 		
 		
-		Placeholdertextfield CompanyName = new Placeholdertextfield();
-		CompanyName.setBounds(99, 85, 231, 25);
+		CompanyName = new Placeholdertextfield();
+		CompanyName.setBounds(153, 124, 157, 20);
 		CompanyName.setPlaceholder("Company Name");
 		CompanyName.setOpaque(true);
 		Logincontainer.add(CompanyName);
 		
 		
-		Placeholdertextfield VATNumber = new Placeholdertextfield();
-		VATNumber.setBounds(99, 121, 231, 25);
+		VATNumber = new Placeholdertextfield();
+		VATNumber.setBounds(153, 155, 157, 20);
 		VATNumber.setPlaceholder("VAT Number");
 		VATNumber.setOpaque(true);
 		Logincontainer.add(VATNumber);
 		
 		
-		Placeholdertextfield Username = new Placeholdertextfield();
-		Username.setBounds(99, 157, 231, 25);
+		Username = new Placeholdertextfield();
+		Username.setBounds(153, 186, 157, 20);
 		Username.setPlaceholder("Username");
 		Username.setOpaque(true);
 		Logincontainer.add(Username);
 				
 		
-		Placeholdertextfield Email = new Placeholdertextfield();
-		Email.setBounds(99, 193, 231, 25);
+		Email = new Placeholdertextfield();
+		Email.setBounds(153, 217, 157, 20);
 		Email.setPlaceholder("E-mail");
 		Email.setOpaque(true);
 		Logincontainer.add(Email);
 				
 		
-		Placeholderpasswordfield Password = new Placeholderpasswordfield();
-		Password.setBounds(99, 229, 231, 25);
+		Password = new Placeholderpasswordfield();
+		Password.setBounds(153, 258, 157, 19);
 		Password.setOpaque(true);
 		Password.setPlaceholder("Password");
 		Logincontainer.add(Password);
 				
 		
-		Placeholderpasswordfield ConfirmPassword = new Placeholderpasswordfield();
-		ConfirmPassword.setBounds(99, 264, 231, 25);
+		ConfirmPassword = new Placeholderpasswordfield();
+		ConfirmPassword.setBounds(153, 288, 157, 19);
 		ConfirmPassword.setOpaque(true);
 		ConfirmPassword.setPlaceholder("Confirm Password");
 		Logincontainer.add(ConfirmPassword);
@@ -213,4 +219,53 @@ public class RegisterPage extends JFrame {
 	public void close(){
 		this.dispose();
 	}
+	
+	public Boolean fieldValidation() {
+        Boolean result = true;
+       
+            if (CompanyName.getText().equals("")){ /* verifica se o campos esta vazio */
+            	CompanyName.setBackground(Color.RED); /* seta o background para vermelho */
+                result=false;
+            } else {
+            	CompanyName.setBackground(Color.WHITE);  /* seta o background para branco */
+            }
+           
+            if (VATNumber.getText().equals("")){ /* verifica se o campos esta vazio */
+            	VATNumber.setBackground(Color.RED); /* seta o background para vermelho */
+                result=false;
+            } else {
+            	VATNumber.setBackground(Color.WHITE);  /* seta o background para branco */
+            }
+           
+            if (Username.getText().equals("")){ /* verifica se o campos esta vazio */
+            	Username.setBackground(Color.RED); /* seta o background para vermelho */
+                result=false;
+            } else {
+            	Username.setBackground(Color.WHITE);  /* seta o background para branco */
+                }
+           
+            if (Email.getText().equals("")){ /* verifica se o campos esta vazio */
+            	Email.setBackground(Color.RED); /* seta o background para vermelho */
+                result=false;
+            } else {
+            	Email.setBackground(Color.WHITE);  /* seta o background para branco */
+            }
+            
+            if (Password.getText().equals("")){ /* verifica se o campos esta vazio */
+            	Password.setBackground(Color.RED); /* seta o background para vermelho */
+                result=false;
+            } else {
+            	Password.setBackground(Color.WHITE);  /* seta o background para branco */
+            }
+   
+            if (ConfirmPassword.getText().equals("")){ /* verifica se o campos esta vazio */
+            	ConfirmPassword.setBackground(Color.RED); /* seta o background para vermelho */
+                result=false;
+            } else {
+            	ConfirmPassword.setBackground(Color.WHITE);  /* seta o background para branco */
+            }
+   
+        return result;
+    }
+	
 }
