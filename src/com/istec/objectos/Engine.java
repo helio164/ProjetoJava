@@ -30,7 +30,6 @@ public class Engine implements Serializable {
 	public static ArrayList<Store> stores;
 	public static Sale currentSale;
 
-
 	public Engine() {
 		stores = new ArrayList<Store>();
 		// TODO Auto-generated constructor stub
@@ -66,7 +65,6 @@ public class Engine implements Serializable {
 			return instance;
 		}		
 	}
-
 
 	//Registration Stuff
 	public static Boolean login(String username, String password) {
