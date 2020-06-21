@@ -20,12 +20,15 @@ import com.istec.objectos.User;
 
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.UIManager;
+import javax.swing.border.BevelBorder;
 
 public class RecuperarPassword extends JFrame {
 
 	private JPanel contentPane;	
 	private int width = 923;
 	private int height = 777;
+	public Placeholdertextfield Email;
 
 	/**
 	 * Launch the application.
@@ -65,25 +68,30 @@ public class RecuperarPassword extends JFrame {
 		lblTitulo.setForeground(Color.BLACK);
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitulo.setBounds(73, 36, 276, 66);
+		lblTitulo.setBounds(67, 36, 276, 66);
 		loginContainer.add(lblTitulo);
 		
-		Placeholdertextfield Email = new Placeholdertextfield();
+		Email = new Placeholdertextfield();
 		Email.setBounds(132, 148, 145, 20);
 		loginContainer.add(Email);
 		Email.setPlaceholder("E-mail");
 		Email.setOpaque(true);
 		
 		JButton btnCancel = new JButton("Cancelar");
+		btnCancel.setForeground(Color.DARK_GRAY);
+		btnCancel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		btnCancel.setBounds(132, 297, 145, 56);
 		loginContainer.add(btnCancel);
-		btnCancel.setBackground(new Color(32, 178, 170));
+		btnCancel.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		
 		
 		JButton btnConfirm = new JButton("Recuperar");
+		btnConfirm.setForeground(Color.DARK_GRAY);
+		btnConfirm.setBorder(UIManager.getBorder("Button.border"));
+		btnConfirm.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		btnConfirm.setBounds(132, 202, 145, 56);
 		loginContainer.add(btnConfirm);
-		btnConfirm.setBackground(new Color(32, 178, 170));
+		btnConfirm.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				User u = Engine.getUserByEmail(Email.getText());
@@ -112,5 +120,16 @@ public class RecuperarPassword extends JFrame {
 	
 	public void close(){
 		this.dispose();
+	}
+	public Boolean fieldValidation() {
+		Boolean result = true;
+		
+			if (Email.getText().equals("")){ /* verifica se o campos esta vazio */
+				Email.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				Email.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+			return result;
 	}
 }

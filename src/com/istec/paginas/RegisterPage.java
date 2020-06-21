@@ -34,6 +34,11 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+
+
+import javax.swing.UIManager;
+
+
 public class RegisterPage extends JFrame {
 	private int width = 923;
 	private int height = 777;
@@ -76,7 +81,7 @@ public class RegisterPage extends JFrame {
 		
 		JPanel Logincontainer = new JPanel();		
 		Logincontainer.setBackground(new Color(204,204,204,150));
-		Logincontainer.setBounds(254, 164, 441, 514);
+		Logincontainer.setBounds(254, 165, 441, 514);
 		contentPane.add(Logincontainer);
 		Logincontainer.setLayout(null);
 		
@@ -124,15 +129,15 @@ public class RegisterPage extends JFrame {
 		
 		JComboBox cbxStoreType = new JComboBox();
 		cbxStoreType.setModel(new DefaultComboBoxModel<>(StoreType.values()));
-		cbxStoreType.setBounds(153, 317, 157, 21);
+		cbxStoreType.setBounds(137, 312, 157, 25);
 		Logincontainer.add(cbxStoreType);
 		
 		JButton BackAdmin = new JButton("Back");
 		BackAdmin.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		BackAdmin.setForeground(Color.DARK_GRAY);
-		BackAdmin.setBounds(27, 375, 168, 77);
+		BackAdmin.setBounds(44, 385, 145, 56);
 		Logincontainer.add(BackAdmin);
-		BackAdmin.setBackground(new Color(0, 255, 0));
+		BackAdmin.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		BackAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no Back");
@@ -142,11 +147,12 @@ public class RegisterPage extends JFrame {
 		});
 		
 		JButton RegisterAdmin = new JButton("Register");
-		RegisterAdmin.setFont(new Font("Tahoma", Font.ITALIC, 12));
+		RegisterAdmin.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		RegisterAdmin.setForeground(Color.DARK_GRAY);
-		RegisterAdmin.setBounds(260, 375, 157, 77);
+		RegisterAdmin.setBounds(251, 385, 145, 56);
 		Logincontainer.add(RegisterAdmin);
-		RegisterAdmin.setBackground(new Color(0, 255, 0));
+
+		RegisterAdmin.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		
 		JFileChooser fc = new JFileChooser();
 		JLabel picPanel = new JLabel("");

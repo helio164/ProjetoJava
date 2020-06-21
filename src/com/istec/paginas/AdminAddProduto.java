@@ -32,15 +32,20 @@ import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import java.awt.Font;
 
 public class AdminAddProduto extends JFrame {
 
-	private JPanel contentPane;
-	private Placeholdertextfield AdminAddDesignation;
-	private Placeholdertextfield AdminAddCode;
-	private Placeholdertextfield AdminAddPrice;
-	private Placeholdertextfield AdminAddType;
+	public JPanel contentPane;
+	public Placeholdertextfield AdminAddDesignation;
+	public Placeholdertextfield AdminAddCode;
+	public Placeholdertextfield AdminAddPrice;
+	public Placeholdertextfield AdminAddType;
 	public String pathName = "";
+	
+	
+	
 	
 	/**
 	 * Launch the application.
@@ -113,45 +118,50 @@ public class AdminAddProduto extends JFrame {
 		
 		
 		//
-		Placeholdertextfield AdminAddDesignation = new Placeholdertextfield();
+
+		AdminAddDesignation = new Placeholdertextfield();
 		AdminAddDesignation.setBounds(176, 202, 231, 19);
 		AdminAddDesignation.setPlaceholder("Designation");
 		AdminAddDesignation.setOpaque(true);
 		contentPane.add(AdminAddDesignation);
 		
-		Placeholdertextfield AdminAddCode = new Placeholdertextfield();
+		AdminAddCode = new Placeholdertextfield();
 		AdminAddCode.setBounds(176, 231, 231, 19);
 		AdminAddCode.setPlaceholder("Code");
 		AdminAddCode.setOpaque(true);
 		contentPane.add(AdminAddCode);
 		
-		Placeholdertextfield AdminAddPrice = new Placeholdertextfield();
+		AdminAddPrice = new Placeholdertextfield();
 		AdminAddPrice.setBounds(176, 260, 231, 19);
 		AdminAddPrice.setPlaceholder("Price");
 		AdminAddPrice.setOpaque(true);
 		contentPane.add(AdminAddPrice);
 		
-		Placeholdertextfield AdminAddType = new Placeholdertextfield();
+		AdminAddType = new Placeholdertextfield();
 		AdminAddType.setBounds(176, 289, 231, 19);
 		AdminAddType.setPlaceholder("Type");
 		AdminAddType.setOpaque(true);
 		contentPane.add(AdminAddType);
 	
 		JButton Adminbtncancel = new JButton("Cancel");
-		Adminbtncancel.setBackground(new Color(32, 178, 170));
+		Adminbtncancel.setForeground(Color.DARK_GRAY);
+		Adminbtncancel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		Adminbtncancel.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		Adminbtncancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no cancel");
 				close();
 			}
 		});
-		Adminbtncancel.setBounds(68, 382, 168, 104);
+		Adminbtncancel.setBounds(85, 383, 145, 56);
 		
 		contentPane.add(Adminbtncancel);
 		
 		JButton Adminbtncreate = new JButton("Create");
-		Adminbtncreate.setBackground(new Color(32, 178, 170));
-		Adminbtncreate.setBounds(348, 383, 168, 104);
+		Adminbtncreate.setForeground(Color.DARK_GRAY);
+		Adminbtncreate.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		Adminbtncreate.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
+		Adminbtncreate.setBounds(343, 383, 145, 56);
 		Adminbtncreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "carregaste no create");
@@ -177,5 +187,37 @@ public class AdminAddProduto extends JFrame {
 	
 	public void close(){
 		this.dispose();
+	}
+	public Boolean fieldValidation() {
+		Boolean result = true;
+		
+			if (AdminAddDesignation.getText().equals("")){ /* verifica se o campos esta vazio */
+				AdminAddDesignation.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				AdminAddDesignation.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+			
+			if (AdminAddCode.getText().equals("")){ /* verifica se o campos esta vazio */
+				AdminAddCode.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				AdminAddCode.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+			
+			if (AdminAddPrice.getText().equals("")){ /* verifica se o campos esta vazio */
+				AdminAddPrice.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				AdminAddPrice.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+			
+			if (AdminAddType.getText().equals("")){ /* verifica se o campos esta vazio */
+				AdminAddType.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				AdminAddType.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+		return result;
 	}
 }
