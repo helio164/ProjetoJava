@@ -39,8 +39,8 @@ public class LoginPage extends JFrame {
 	private int width = 923;
 	private int height = 777;
 	private JPanel contentPane;
-	private Placeholdertextfield username;
-	private Placeholderpasswordfield pwdField;
+	public Placeholdertextfield username;
+	public Placeholderpasswordfield pwdField;
 
 	/**
 	 * Launch the application.
@@ -157,11 +157,18 @@ public class LoginPage extends JFrame {
 	public Boolean fieldValidation() {
 		Boolean result = true;
 		
-			if (Email.getText().equals("")){ /* verifica se o campos esta vazio */
-				Email.setBackground(Color.RED); /* coloca o background para vermelho */
+			if (username.getText().equals("")){ /* verifica se o campos esta vazio */
+				username.setBackground(Color.RED); /* coloca o background para vermelho */
 				result=false;
 			} else {
-				Email.setBackground(Color.WHITE);  /* coloca o background para branco */
+				username.setBackground(Color.WHITE);  /* coloca o background para branco */
+				}
+			
+			if (pwdField.getText().equals("")){ /* verifica se o campos esta vazio */
+				pwdField.setBackground(Color.RED); /* coloca o background para vermelho */
+				result=false;
+			} else {
+				pwdField.setBackground(Color.WHITE);  /* coloca o background para branco */
 				}
 			return result;
 	}
