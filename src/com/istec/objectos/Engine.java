@@ -1,5 +1,8 @@
 package com.istec.objectos;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.Window;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -251,6 +255,15 @@ public class Engine implements Serializable {
 		//currentStore.sales.add(sale);
 	}
 	
+	//Sale stuff
+	public static void addSale() {
+				
+		Engine.currentStore.sales.add(
+				new Sale(Engine.currentSale.products,Engine.loggedUser,new Date())
+		);		
+		Engine.currentSale = new Sale();
+	}
+	
 	//File Stuff
 	@SuppressWarnings("unchecked")
 	private void ReadFile(File file) throws IOException, ClassNotFoundException {
@@ -283,6 +296,13 @@ public class Engine implements Serializable {
 		return file.exists();
 	}
 
+	//UTILS
+	public static void centreWindow(Window frame) {
+	    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+	    int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+	    int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+	    frame.setLocation(x, y);
+	}
 
 /*FIM DO FICHEIRO */ }
 

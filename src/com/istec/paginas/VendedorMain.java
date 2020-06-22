@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -52,6 +53,7 @@ public class VendedorMain extends JFrame {
 	public VendedorMain() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 768);
+		Engine.centreWindow(this);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(new Color(70, 130, 180));
@@ -70,6 +72,19 @@ public class VendedorMain extends JFrame {
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.setBackground(new Color(0, 206, 209));
 		btnConfirm.setBounds(17, 647, 221, 42);
+		btnConfirm.setEnabled(!Engine.currentSale.products.isEmpty());
+		btnConfirm.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//JOptionPane.showMessageDialog(null, "mudar para pagina de registo");
+				if(btnConfirm.isEnabled()) {
+					new fatura();
+					Engine.addSale();
+				}else {
+					JOptionPane.showMessageDialog(null, "Nothing to buy");
+				}
+			}
+		});
 		contentPane.add(btnConfirm);
 				
 		GridOfProducts Vendedorpanelitems = new GridOfProducts("SALES");
@@ -80,9 +95,10 @@ public class VendedorMain extends JFrame {
 		addWindowFocusListener(new WindowFocusListener() {
 			public void windowGainedFocus(WindowEvent e) {
 				listOfSales.loadSales();
-				
+				btnConfirm.setEnabled(!Engine.currentSale.products.isEmpty());
 			}
 			public void windowLostFocus(WindowEvent e) {
+				btnConfirm.setEnabled(!Engine.currentSale.products.isEmpty());
 			}
 		});
 		

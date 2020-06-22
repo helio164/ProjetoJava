@@ -69,6 +69,7 @@ public class AdminAddProduto extends JFrame {
 	public AdminAddProduto() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 607, 555);
+		Engine.centreWindow(this);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

@@ -52,6 +52,7 @@ public class RecuperarPassword extends JFrame {
 	public RecuperarPassword() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, width, height);
+		Engine.centreWindow(this);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -102,7 +103,7 @@ public class RecuperarPassword extends JFrame {
 		});
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				new LoginPage();
 				close();
 			}
 		});

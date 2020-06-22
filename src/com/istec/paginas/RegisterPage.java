@@ -74,6 +74,7 @@ public class RegisterPage extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, width, height);
+		Engine.centreWindow(this);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -156,7 +157,7 @@ public class RegisterPage extends JFrame {
 		
 		JFileChooser fc = new JFileChooser();
 		JLabel picPanel = new JLabel("");
-		picPanel.setBounds(186, 44, 79, 63);
+		picPanel.setBounds(173, 32, 79, 63);
 		picPanel.setIcon(new ImageIcon(new ImageIcon("img\\add.png").getImage().getScaledInstance(picPanel.getWidth(), picPanel.getHeight(), Image.SCALE_DEFAULT)));
 		Logincontainer.add(picPanel);
 		picPanel.addMouseListener(new MouseAdapter() {

@@ -72,6 +72,7 @@ public class AddVendedor extends JFrame {
 	public AddVendedor() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 607, 555);
+		Engine.centreWindow(this);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

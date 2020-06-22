@@ -16,4 +16,10 @@ public class Sale implements Serializable {
 		
 	}
 
+	public Sale(ArrayList<Product> products,User vendedor, Date date) {
+		// TODO Auto-generated constructor stub
+		this.products = products;
+		this.vendor = vendedor;
+		this.date = date;		
+	}
 }
