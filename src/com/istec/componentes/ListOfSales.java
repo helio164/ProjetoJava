@@ -23,9 +23,6 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 
 public class ListOfSales extends JPanel {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5280176045725860237L;
 	private JTable productsTable;
 	private JTable totalTable;
@@ -72,12 +69,7 @@ public class ListOfSales extends JPanel {
 		loadSales();
 	}
 	
-	public void loadSales() {
-		
-		/*
-		 * for(int i = 0; i < dtm.getRowCount(); i++) { dtm.removeRow(i); }
-		 */
-		
+	public void loadSales() {		
 		dtm.setRowCount(0);
 		if(Engine.currentSale == null) {
 			Engine.currentSale = new Sale();

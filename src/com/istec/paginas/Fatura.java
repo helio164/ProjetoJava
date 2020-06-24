@@ -28,7 +28,7 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.Component;
 import java.awt.Dimension;
 
-public class fatura extends JFrame {
+public class Fatura extends JFrame {
 
 	private JPanel contentPane;
 
@@ -39,7 +39,7 @@ public class fatura extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					fatura frame = new fatura();
+					Fatura frame = new Fatura();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +51,7 @@ public class fatura extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public fatura() {
+	public Fatura() {
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 307, 646);
@@ -71,18 +71,14 @@ public class fatura extends JFrame {
 		
 		JLabel lblStoreName = new JLabel(Engine.currentStore.name);
 		lblStoreName.setHorizontalAlignment(SwingConstants.CENTER);
-		//lblStoreName.setBounds(123, 5, 151, 37);
 		lblStoreName.setFont(new Font("Tahoma", Font.BOLD, 30));
 		panelHeader.add(lblStoreName);
 
 		JLabel lblVAT = new JLabel("VAT: "+Engine.currentStore.vat);
 		lblVAT.setAlignmentY(Component.TOP_ALIGNMENT);
-		//lblVAT.setBounds(279, 17, 23, 13);
 		panelHeader.add(lblVAT);
 		
 		JLabel lblVendedor = new JLabel("Seller: "+Engine.loggedUser.username);
-		//lblVendedor.setAlignmentY(Component.TOP_ALIGNMENT);
-		//lblVAT.setBounds(279, 17, 23, 13);
 		panelHeader.add(lblVendedor);
 
 		ListOfSales listOfSales = new ListOfSales(10,85);
@@ -105,9 +101,6 @@ public class fatura extends JFrame {
 		JLabel lblComeAgain = new JLabel("Come again");
 		lblComeAgain.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panelFooter.add(lblComeAgain);
-		
-		
-		
 		
 		listOfSales.loadSales();
 		this.setVisible(true);

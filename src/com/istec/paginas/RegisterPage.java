@@ -129,7 +129,7 @@ public class RegisterPage extends JFrame {
 		ConfirmPassword.setPlaceholder("Confirm Password");
 		Logincontainer.add(ConfirmPassword);
 		
-		JComboBox cbxStoreType = new JComboBox();
+		JComboBox<StoreType> cbxStoreType = new JComboBox<StoreType>();
 		cbxStoreType.setModel(new DefaultComboBoxModel<>(StoreType.values()));
 		cbxStoreType.setBounds(130, 328, 157, 25);
 		Logincontainer.add(cbxStoreType);
@@ -142,7 +142,6 @@ public class RegisterPage extends JFrame {
 		BackAdmin.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		BackAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//JOptionPane.showMessageDialog(null, "carregaste no Back");
 				new LoginPage();
 				close();
 			}
@@ -186,7 +185,6 @@ public class RegisterPage extends JFrame {
 		RegisterAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(fieldValidation()) {
-					//JOptionPane.showMessageDialog(null, "carregaste no Register");
 					if(Password.getText().equals(ConfirmPassword.getText())) {
 						Store newStore = new Store(
 								CompanyName.getText(),

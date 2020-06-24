@@ -24,9 +24,6 @@ public class AdminMain extends JFrame {
 
 	private static JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -40,9 +37,6 @@ public class AdminMain extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public AdminMain() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 768);

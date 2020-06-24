@@ -82,7 +82,7 @@ public class VendedorMain extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(btnConfirm.isEnabled()) {
-					new fatura();
+					new Fatura();
 					Engine.addSale();
 				}else {
 					JOptionPane.showMessageDialog(null, "Nothing to buy");

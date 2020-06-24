@@ -25,7 +25,6 @@ public class ListOfVendedoresPanel extends JPanel {
 		// TODO Auto-generated constructor stub
 		JPanel Adminmainpanelusers = new JPanel();
 		Adminmainpanelusers.setBounds(180, 20, 657, 73);
-		//contentPane.add(Adminmainpanelusers);
 		Adminmainpanelusers.setLayout(new BoxLayout(Adminmainpanelusers, BoxLayout.X_AXIS));
 		this.loadVendedores();		
 	}
