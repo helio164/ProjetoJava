@@ -54,7 +54,7 @@ public class fatura extends JFrame {
 	public fatura() {
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 307, 646);
 		Engine.centreWindow(this);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
@@ -67,17 +67,23 @@ public class fatura extends JFrame {
 		panelHeader.setSize(contentPane.getWidth(), (int)(contentPane.getHeight()*0.40));
 		contentPane.add(panelHeader, BorderLayout.PAGE_START);
 		panelHeader.setLayout(new BoxLayout(panelHeader, BoxLayout.Y_AXIS));
+		panelHeader.setBorder(new EmptyBorder(10, 10, 30, 10));
 		
 		JLabel lblStoreName = new JLabel(Engine.currentStore.name);
-		lblStoreName.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblStoreName.setHorizontalAlignment(SwingConstants.CENTER);
 		//lblStoreName.setBounds(123, 5, 151, 37);
 		lblStoreName.setFont(new Font("Tahoma", Font.BOLD, 30));
 		panelHeader.add(lblStoreName);
 
-		JLabel lblVAT = new JLabel("VAT:\t"+Engine.currentStore.vat);
+		JLabel lblVAT = new JLabel("VAT: "+Engine.currentStore.vat);
+		lblVAT.setAlignmentY(Component.TOP_ALIGNMENT);
 		//lblVAT.setBounds(279, 17, 23, 13);
 		panelHeader.add(lblVAT);
+		
+		JLabel lblVendedor = new JLabel("Seller: "+Engine.loggedUser.username);
+		//lblVendedor.setAlignmentY(Component.TOP_ALIGNMENT);
+		//lblVAT.setBounds(279, 17, 23, 13);
+		panelHeader.add(lblVendedor);
 
 		ListOfSales listOfSales = new ListOfSales(10,85);
 		listOfSales.setBackground(new Color(255, 255, 255));
@@ -88,6 +94,7 @@ public class fatura extends JFrame {
 		panelFooter.setBackground(Color.WHITE);
 		contentPane.add(panelFooter, BorderLayout.SOUTH);
 		panelFooter.setLayout(new BoxLayout(panelFooter, BoxLayout.Y_AXIS));
+		panelFooter.setBorder(new EmptyBorder(30, 10, 10, 10));
 		
 		JLabel lblThankYou = new JLabel("Thank You");
 		lblThankYou.setAlignmentX(Component.CENTER_ALIGNMENT);

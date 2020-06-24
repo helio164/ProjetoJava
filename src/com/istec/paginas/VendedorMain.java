@@ -1,8 +1,8 @@
 package com.istec.paginas;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -12,27 +12,19 @@ import javax.swing.border.EmptyBorder;
 
 import com.istec.componentes.GridOfProducts;
 import com.istec.componentes.ListOfSales;
-import com.istec.componentes.PItem;
 import com.istec.objectos.Engine;
-import com.istec.objectos.Product;
-
-import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 
-import javax.swing.JTabbedPane;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 public class VendedorMain extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTable table;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -62,11 +54,24 @@ public class VendedorMain extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		if(Engine.loggedUser.isAdmin()) {
+			JButton btnManage = new JButton("Manage");
+			btnManage.setForeground(new Color(255, 255, 255));
+			btnManage.setBackground(new Color(72, 209, 204));
+			btnManage.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			btnManage.setBounds(50, 35, 112, 21);
+			btnManage.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					new AdminMain();
+					close();
+				}
+			});
+			contentPane.add(btnManage);
+		}
+		
 		ListOfSales listOfSales = new ListOfSales(10,85);
-		//listOfSales.setLocation(10, 87);
 		listOfSales.setBackground(new Color(255, 255, 255));
-		//listOfSales.setBounds(18, 170, 220, 333);
-		//panel.setLayout(new GridLayout(0, 1, 0, 0));
 		contentPane.add(listOfSales);
 		
 		JButton btnConfirm = new JButton("Confirm");
@@ -76,7 +81,6 @@ public class VendedorMain extends JFrame {
 		btnConfirm.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//JOptionPane.showMessageDialog(null, "mudar para pagina de registo");
 				if(btnConfirm.isEnabled()) {
 					new fatura();
 					Engine.addSale();
@@ -88,7 +92,6 @@ public class VendedorMain extends JFrame {
 		contentPane.add(btnConfirm);
 				
 		GridOfProducts Vendedorpanelitems = new GridOfProducts("SALES");
-		//JPanel Vendedorpanelitems = new JPanel();
 		Vendedorpanelitems.setBounds(268, 58, 714, 631);
 		contentPane.add(Vendedorpanelitems);
 		 
@@ -103,5 +106,9 @@ public class VendedorMain extends JFrame {
 		});
 		
 		this.setVisible(true);
+	}
+
+	public void close(){
+		this.dispose();
 	}
 }

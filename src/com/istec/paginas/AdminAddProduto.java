@@ -1,6 +1,5 @@
 package com.istec.paginas;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
 
@@ -13,12 +12,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import java.awt.FlowLayout;
 import com.istec.componentes.Placeholdertextfield;
 import com.istec.objectos.Engine;
 import com.istec.objectos.Product;
-import com.istec.objectos.Vendedor;
-import com.istec.componentes.Placeholderpasswordfield;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 
@@ -27,10 +23,6 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import java.awt.Font;
@@ -43,10 +35,7 @@ public class AdminAddProduto extends JFrame {
 	public Placeholdertextfield AdminAddPrice;
 	public Placeholdertextfield AdminAddType;
 	public String pathName = "";
-	
-	
-	
-	
+		
 	/**
 	 * Launch the application.
 	 */
@@ -75,16 +64,6 @@ public class AdminAddProduto extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		/*
-		 * JLabel Adminlbladditem = new JLabel("New label");
-		 * Adminlbladditem.setBounds(238, 50, 113, 104);
-		 * 
-		 * Adminlbladditem.setIcon(new ImageIcon(new
-		 * ImageIcon("img\\add.png").getImage().getScaledInstance(Adminlbladditem.
-		 * getWidth(), Adminlbladditem.getHeight(), Image.SCALE_DEFAULT)));
-		 * contentPane.add(Adminlbladditem);
-		 */
-		
 		JFileChooser fc = new JFileChooser();
         JLabel picPanel = new JLabel("");
         picPanel.setBounds(238, 50, 113, 104);
@@ -100,7 +79,6 @@ public class AdminAddProduto extends JFrame {
                     if (response == JFileChooser.APPROVE_OPTION) {
                         pathName = fc.getSelectedFile().getPath();
                         JOptionPane.showMessageDialog(null, pathName);
-                        //ImageIcon icon = new ImageIcon(pathName);
                         picPanel.setIcon(new ImageIcon(new ImageIcon(pathName).getImage().getScaledInstance(picPanel.getWidth(), picPanel.getHeight(), Image.SCALE_DEFAULT)));
                     } else {
                         JOptionPane.showMessageDialog(null, "Feel Free to Look Later");
@@ -113,12 +91,6 @@ public class AdminAddProduto extends JFrame {
         });
         picPanel.setBounds(151, 22, 267, 156);
         contentPane.add(picPanel);
-		
-		//
-		
-		
-		
-		//
 
 		AdminAddDesignation = new Placeholdertextfield();
 		AdminAddDesignation.setBounds(176, 175, 230, 25);
@@ -150,7 +122,6 @@ public class AdminAddProduto extends JFrame {
 		Adminbtncancel.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		Adminbtncancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//JOptionPane.showMessageDialog(null, "carregaste no cancel");
 				close();
 			}
 		});
@@ -165,20 +136,24 @@ public class AdminAddProduto extends JFrame {
 		Adminbtncreate.setBounds(330, 365, 145, 56);
 		Adminbtncreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//JOptionPane.showMessageDialog(null, "carregaste no create");
-				String designation = AdminAddDesignation.getText();
-				String code = AdminAddCode.getText();
-				Double price = Double.parseDouble(AdminAddPrice.getText());
-				String type = AdminAddType.getText().toUpperCase();
-				String image = (pathName.isEmpty()?"img\\product.png":pathName);
-				
-								
-				if(Engine.addProduct(new Product(designation, code, price, type, image))) {
-					JOptionPane.showMessageDialog(null, "Produto adicionado COM sucesso!");
-					close();
-				} else {
-					JOptionPane.showMessageDialog(null, "Produto adicionado SEM sucesso!");
-				}	
+				if(fieldValidation()) {
+					//JOptionPane.showMessageDialog(null, "carregaste no create");
+					String designation = AdminAddDesignation.getText();
+					String code = AdminAddCode.getText();
+					Double price = Double.parseDouble(AdminAddPrice.getText());
+					String type = AdminAddType.getText().toUpperCase();
+					String image = (pathName.isEmpty()?"img\\product.png":pathName);
+					
+									
+					if(Engine.addProduct(new Product(designation, code, price, type, image))) {
+						JOptionPane.showMessageDialog(null, "Product was added!",null,1);
+						close();
+					} else {
+						JOptionPane.showMessageDialog(null, "Producto was NOT added!",null,0);
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "Please fill all required fields.",null,2);
+				}
 			}
 		});
 		contentPane.add(Adminbtncreate);

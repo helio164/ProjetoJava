@@ -77,34 +77,7 @@ public class AddVendedor extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		
-
-//		JLabel lblFotoVendedor = new JLabel("New label");
-//		lblFotoVendedor.addMouseListener(new MouseAdapter() {
-//			@Override
-//			//Marcos inventou aqui cenas
-//						
-//			public void mouseClicked(MouseEvent e) {
-//				final JFileChooser fc = new JFileChooser();
-//				int returnVal = fc.showOpenDialog(fc);
-//				String filePath = null;
-//				if (returnVal == JFileChooser.APPROVE_OPTION) {
-//					filePath = fc.getSelectedFile().getAbsolutePath();
-//					
-//				} else {
-//					System.out.println("User clicked CANCEL");
-//					System.exit(1);
-//					
-//				}
-//				
-//				new ChooseFile(filePath);
-//				
-//			}
-//		});
-//		lblFotoVendedor.setBounds(232, 52, 128, 113);
-//		contentPane.add(lblFotoVendedor);
-		
+				
 		    /**
 		     * Create the frame.
 		    */	  
@@ -169,7 +142,6 @@ public class AddVendedor extends JFrame {
 		AddVendedorbtncancel.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		AddVendedorbtncancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//JOptionPane.showMessageDialog(null, "carregaste no cancel");
 				close();
 			}
 		});
@@ -183,15 +155,19 @@ public class AddVendedor extends JFrame {
 		AddVendedorbtncreate.setBounds(330, 365, 145, 56);
 		AddVendedorbtncreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(fieldValidation()) {
 				//JOptionPane.showMessageDialog(null, "carregaste no register");				
 					if(Engine.addVendedor(
 							new Vendedor(AddVendedorUsername.getText(),AddVendedorEmail.getText(),AddVendedorPassword.getText(), (pathName.isEmpty()?"img\\user.png":pathName)))
 					) {
-						JOptionPane.showMessageDialog(null, "Vendedor adicionado COM sucesso!");
+						JOptionPane.showMessageDialog(null, "Seller was added!",null,1);
 						close();
 					} else {
-						JOptionPane.showMessageDialog(null, "Vendedor adicionado SEM sucesso!");
+						JOptionPane.showMessageDialog(null, "Seller was NOT added!",null,0);
 					}
+				}else {
+					JOptionPane.showMessageDialog(null, "Please fill all required fields.",null,2);
+				}
 			}
 		});
 		contentPane.add(AddVendedorbtncreate);

@@ -3,6 +3,7 @@ package com.istec.paginas;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.awt.TrayIcon.MessageType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -184,26 +185,32 @@ public class RegisterPage extends JFrame {
 		
 		RegisterAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//JOptionPane.showMessageDialog(null, "carregaste no Register");
-				if(Password.getText().equals(ConfirmPassword.getText())) {
-					Store newStore = new Store(
-							CompanyName.getText(),
-							VATNumber.getText(),
-							(StoreType) cbxStoreType.getSelectedItem(),
-							new Admin(
-									Username.getText(),
-									Email.getText(),
-									Password.getText(),
-									(pathName.isEmpty()?"img\\user.png":pathName)
-									)
-							);
-					if(Engine.register(newStore)) {
-						JOptionPane.showMessageDialog(null, "Registo adicionado COM sucesso!");
-						new LoginPage();
-						close();
-					} else {
-						JOptionPane.showMessageDialog(null, "Vendedor adicionado SEM sucesso!");
+				if(fieldValidation()) {
+					//JOptionPane.showMessageDialog(null, "carregaste no Register");
+					if(Password.getText().equals(ConfirmPassword.getText())) {
+						Store newStore = new Store(
+								CompanyName.getText(),
+								VATNumber.getText(),
+								(StoreType) cbxStoreType.getSelectedItem(),
+								new Admin(
+										Username.getText(),
+										Email.getText(),
+										Password.getText(),
+										(pathName.isEmpty()?"img\\user.png":pathName)
+										)
+								);
+						if(Engine.register(newStore)) {
+							JOptionPane.showMessageDialog(null, "Registation with success!",null,1);
+							new LoginPage();
+							close();
+						} else {
+							JOptionPane.showMessageDialog(null, "Registation NOT worked!",null,0);
+						}
+					}else {
+						JOptionPane.showMessageDialog(null, "Password fields are not equal.",null,0);
 					}
+				}else {
+					JOptionPane.showMessageDialog(null, "Please fill all required fields.",null,2);
 				}
 			}
 		});

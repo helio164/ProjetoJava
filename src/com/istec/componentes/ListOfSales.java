@@ -2,7 +2,12 @@ package com.istec.componentes;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.TableColumnModelListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 import com.istec.objectos.Engine;
 import com.istec.objectos.Product;
@@ -12,6 +17,7 @@ import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.text.DecimalFormat;
+import java.util.Enumeration;
 
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
@@ -25,12 +31,14 @@ public class ListOfSales extends JPanel {
 	private JTable totalTable;
 	public DefaultTableModel dtm;
 	public DefaultTableModel dtmTotal;
+	public JTableHeader th;
 
 	public ListOfSales(int x, int y) {
 		
 		setLayout(new BorderLayout(0, 0));
 		this.setBounds(x, y, 250, 550);
 		productsTable = new JTable();
+		productsTable.setShowVerticalLines(false);
 		//productsTable.setAlignmentY(Component.TOP_ALIGNMENT);
 		productsTable.setBounds(x+0, y+0, 250, 499);
 		dtm = new DefaultTableModel(new Object[][] {},new String[] {"Designacao", "Qt.", "Preco"}) {
@@ -44,6 +52,7 @@ public class ListOfSales extends JPanel {
 		productsTable.getColumnModel().getColumn(2).setPreferredWidth(61);
 		
 		totalTable = new JTable();
+		totalTable.setShowVerticalLines(false);
 		//totalTable.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		totalTable.setBounds(x+0, y+500, 250, 50);
 		totalTable.setEnabled(false);
@@ -57,7 +66,7 @@ public class ListOfSales extends JPanel {
 			}
 		);
 		totalTable.setModel(dtmTotal);
-
+		
 		add(productsTable);
 		add(totalTable, BorderLayout.SOUTH);
 		loadSales();

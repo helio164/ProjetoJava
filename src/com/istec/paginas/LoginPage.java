@@ -12,23 +12,15 @@ import javax.swing.border.EmptyBorder;
 import com.istec.componentes.Placeholderpasswordfield;
 import com.istec.componentes.Placeholdertextfield;
 import com.istec.objectos.Engine;
-import com.istec.objectos.StoreType;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowEvent;
 import javax.swing.UIManager;
 
 public class LoginPage extends JFrame {
@@ -101,7 +93,7 @@ public class LoginPage extends JFrame {
 				if(Engine.login(username.getText(), pwdField.getText())) {
 					close();
 				}else {
-					JOptionPane.showMessageDialog(null, "Login sem sucesso!");
+					JOptionPane.showMessageDialog(null, "Login was NOT successful!",null,0);
 				}
 			}
 		});
@@ -123,7 +115,6 @@ public class LoginPage extends JFrame {
 		signin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//JOptionPane.showMessageDialog(null, "mudar para pagina de registo");
 				new RegisterPage();
 				close();
 			}
@@ -136,7 +127,6 @@ public class LoginPage extends JFrame {
 		recover.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//JOptionPane.showMessageDialog(null, "mudar para pagina de recuperacao password");
 				new RecuperarPassword();
 				close();
 			}

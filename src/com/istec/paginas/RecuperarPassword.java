@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -21,7 +22,6 @@ import com.istec.objectos.User;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.UIManager;
-import javax.swing.border.BevelBorder;
 
 public class RecuperarPassword extends JFrame {
 
@@ -95,10 +95,16 @@ public class RecuperarPassword extends JFrame {
 		btnConfirm.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(fieldValidation()) {
 				User u = Engine.getUserByEmail(Email.getText());
+				JOptionPane.showMessageDialog(null, "Email send to your address.");
 				if(u!=null)
-					Engine.recoverPassword(u);				
-				close();
+					Engine.recoverPassword(u);
+					new LoginPage();
+					close();
+				}else {
+					JOptionPane.showMessageDialog(null, "Please fill all required fields.",null,2);
+				}
 			}
 		});
 		btnCancel.addActionListener(new ActionListener() {
@@ -114,14 +120,13 @@ public class RecuperarPassword extends JFrame {
 		lblbackgroundimage.setIcon(new ImageIcon(new ImageIcon("img\\POS.jpg").getImage().getScaledInstance(lblbackgroundimage.getWidth(), lblbackgroundimage.getHeight(), Image.SCALE_DEFAULT)));
 		contentPane.add(lblbackgroundimage, BorderLayout.NORTH);
 		
-		this.setVisible(true);
-		
-		
+		this.setVisible(true);	
 	}
 	
 	public void close(){
 		this.dispose();
 	}
+	
 	public Boolean fieldValidation() {
 		Boolean result = true;
 		
@@ -130,7 +135,7 @@ public class RecuperarPassword extends JFrame {
 				result=false;
 			} else {
 				Email.setBackground(Color.WHITE);  /* coloca o background para branco */
-				}
+			}
 			return result;
 	}
 }
