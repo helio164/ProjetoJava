@@ -23,11 +23,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.UIManager;
 
+/**
+ * @author StarbucksJavaCoffe
+ * <h1>LoginPage</h1>
+ * <p>Classe que vai permitir ao utilizador efetuar autenticação na aplicação</p>
+ */
 public class LoginPage extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private int width = 923;
 	private int height = 777;
@@ -52,7 +54,8 @@ public class LoginPage extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * <h1>loginPage</h1>
+	 * <p>Construtor permite criar as janelas para autenticação</p>
 	 */
 	public LoginPage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -146,9 +149,18 @@ public class LoginPage extends JFrame {
 	}
 	
 	
+	/**
+	 * <h1>close</h1>
+	 * <p>método para fechar a janela</p>
+	 */
 	public void close(){
 		this.dispose();
 	}
+	/**
+	 * <h1>fieldValidation</h1>
+	 * <p>Método que verifica se os campos estão preenchidos</p>
+	 * @return Booleano, verdadeiro caso os campos sejam todos preenchidos
+	 */
 	public Boolean fieldValidation() {
 		Boolean result = true;
 		

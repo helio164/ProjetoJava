@@ -37,6 +37,11 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
 
+/**
+ * @author StarbucksJavaCoffe
+ * <h1>AddVendedor</h1>
+ * <p>Classe que vai criar e adicionar vendedor</p>
+ */
 @SuppressWarnings({ "unused", "serial" })
 public class AddVendedor extends JFrame {
 
@@ -52,6 +57,7 @@ public class AddVendedor extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -65,8 +71,10 @@ public class AddVendedor extends JFrame {
 		});
 	}
 
+	
 	/**
-	 * Create the frame.
+	 * <h1>AddVendedor</h1>
+	 * <p>Construtor permite criar as janelas para adicionar vendedor</p> 
 	 */
 	public AddVendedor() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -173,9 +181,18 @@ public class AddVendedor extends JFrame {
 		
 		this.setVisible(true);
 	}
+	/**
+	 * <h1>close</h1>
+	 * <p>método para fechar a janela</p>
+	 */
 	public void close(){
 		this.dispose();
 	}
+	/**
+	 * <h1>fieldValidation</h1>
+	 * <p>Método que verifica se os campos estão preenchidos</p>
+	 * @return Booleano, verdadeiro caso os campos sejam todos preenchidos
+	 */
 	public Boolean fieldValidation() {
 		Boolean result = true;
 		

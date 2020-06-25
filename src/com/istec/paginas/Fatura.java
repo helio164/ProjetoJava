@@ -28,6 +28,12 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.Component;
 import java.awt.Dimension;
 
+/**
+ * @author StarbucksJavaCoffe
+ * <h1>AdminAddProduto</h1>
+ * <p>Classe que vai criar e adicionar os produtos</p>
+ */
+
 public class Fatura extends JFrame {
 
 	private JPanel contentPane;
@@ -49,7 +55,8 @@ public class Fatura extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * <h1>Fatura</h1>
+	 * <p>Construtor permite criar as janelas para fatura</p>
 	 */
 	public Fatura() {
 		setBackground(Color.WHITE);

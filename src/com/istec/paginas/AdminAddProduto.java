@@ -27,6 +27,11 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import java.awt.Font;
 
+/**
+ * @author StarbucksJavaCoffe
+ * <h1>AdminAddProduto</h1>
+ * <p>Classe que vai criar e adicionar os produtos</p>
+ */
 public class AdminAddProduto extends JFrame {
 
 	public JPanel contentPane;
@@ -49,6 +54,11 @@ public class AdminAddProduto extends JFrame {
 		});
 	}
 
+	
+	/**
+	 * <h1>AdminAddProduto</h1>
+	 * <p>Construtor permite criar as janelas para adicionar produtos</p>
+	 */
 	public AdminAddProduto() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 607, 555);
@@ -115,6 +125,7 @@ public class AdminAddProduto extends JFrame {
 		Adminbtncancel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		Adminbtncancel.setBackground(UIManager.getColor("FormattedTextField.inactiveBackground"));
 		Adminbtncancel.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				close();
 			}
@@ -155,9 +166,19 @@ public class AdminAddProduto extends JFrame {
 		this.setVisible(true);
 	}
 	
+	/**
+	 * <h1>close</h1>
+	 * <p>método para fechar a janela</p>
+	 * 
+	 */
 	public void close(){
 		this.dispose();
 	}
+	/**
+	 * <h1>fieldValidation</h1>
+	 * <p>Método que verifica se os campos estão preenchidos</p>
+	 * @return Booleano, verdadeiro caso os campos sejam todos preenchidos
+	 */
 	public Boolean fieldValidation() {
 		Boolean result = true;
 		
