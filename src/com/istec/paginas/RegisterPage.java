@@ -40,6 +40,11 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 
+/**
+ * <h1>RegisterPage</h1>
+ * <p>Classe de registo de novo utilizador</p>
+ *
+ */
 public class RegisterPage extends JFrame {
 	private int width = 923;
 	private int height = 777;
@@ -69,7 +74,8 @@ public class RegisterPage extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * <h1>RegisterPage</h1>
+	 * <p>Construtor que permite criar janelas para a página de registo de utilizador</p>
 	 */
 	public RegisterPage() {
 		
@@ -222,10 +228,20 @@ public class RegisterPage extends JFrame {
 		this.setVisible(true);
 	}
 
+	/**
+	 * <h1>close</h1>
+	 * <p>Método para fechar a janela</p>
+	 * 
+	 */
 	public void close(){
 		this.dispose();
 	}
 	
+	/**
+	 * <h1>fieldValidation</h1>
+	 * <p>Método que verifica se os campos estão preenchidos</p>
+	 * @return boleano que é verdadeiro caso os campos estejam todos preenchidos
+	 */
 	public Boolean fieldValidation() {
         Boolean result = true;
        
