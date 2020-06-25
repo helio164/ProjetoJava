@@ -5,6 +5,10 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import javax.swing.JTextField;
 
+/**
+ * <h1>Placeholdertextfield</h1>
+ * <p>Classe para permitir preencher o campo com texto</p> 
+ */
 @SuppressWarnings("serial")
 public class Placeholdertextfield extends JTextField {
 
@@ -14,14 +18,31 @@ public class Placeholdertextfield extends JTextField {
 		
 	}
 
+	/**
+	 * 
+	 * <h1>getPlaceholder</h1>
+     * <p>Método para ir buscar o preenchimento</p>
+     * 
+	 * @return devolve conteúdo de preenchimento
+	*/
 	public String getPlaceholder() {
 		return placeholder;
 	}
 
+	/**
+	 * <h1>setPlaceholder</h1>
+     * <p>Método para preencher o campo</p> 
+	 * @param placeholder recebe string
+	*/	
 	public void setPlaceholder(String placeholder) {
 		this.placeholder = placeholder;
 	}
 	
+	
+	/**
+	 * <h1>paintComponent</h1>
+     * <p>Método para desenhar o placeholder no local</p>
+	*/
 	@Override
 	protected void paintComponent(final Graphics pG) {
 		super.paintComponent(pG);

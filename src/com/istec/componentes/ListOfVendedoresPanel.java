@@ -18,9 +18,19 @@ import javax.swing.border.Border;
 import com.istec.objectos.Engine;
 import com.istec.objectos.User;
 
+/**
+ * 
+ * <h1>ListOfVendedoresPanel</h1>
+ * <p>Classe para mostrar os vendedores</p> 
+ *
+ */
 @SuppressWarnings("serial")
 public class ListOfVendedoresPanel extends JPanel {
 
+	/**
+	 * <h1>ListOfVendedoresPanel</h1>
+     * <p>Método para gerar o painel onde mostramos os vendedores</p> 
+	 */
 	public ListOfVendedoresPanel() {
 		// TODO Auto-generated constructor stub
 		JPanel Adminmainpanelusers = new JPanel();
@@ -29,6 +39,10 @@ public class ListOfVendedoresPanel extends JPanel {
 		this.loadVendedores();		
 	}
 	
+	/**
+	 * <h1>loadVendedores</h1>
+     * <p>Método carregar os vendedores no painel</p> 
+	 */
 	public void loadVendedores() {
 		this.removeAll();
 		for(User u : Engine.currentStore.users) {

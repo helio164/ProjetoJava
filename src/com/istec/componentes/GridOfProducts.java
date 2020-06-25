@@ -14,18 +14,32 @@ import javax.swing.JTabbedPane;
 import com.istec.objectos.Engine;
 import com.istec.objectos.Product;
 
-public class GridOfProducts extends JTabbedPane {
-	//public PItem product;
-	public String page;
-	
+/**
+ * <h1>login</h1>
+ * <p>Classe para posicionamento dos produtos no interface.</p>
+ *  
+*/
+
+
+public class GridOfProducts extends JTabbedPane {	
+	public String page;	
+	/**
+	 * <h1>GridOfProducts</h1>
+	 * <p>Método para gerar um painel com separadores que vai mostrar os produtos</p>
+	 * @param page
+	 */
 	public GridOfProducts(String page) {
-		// TODO Auto-generated constructor stub
+
 		this.page = page;
 		JTabbedPane tabbedpane = new JTabbedPane(); 
 		tabbedpane.setTabPlacement(EAST);
 		this.loadProducts();
 	}
-
+	
+	/**
+	 * <h1>loadProducts</h1>
+	 * <p>Método para carregar os produtos</p>
+	 */
 	public void loadProducts() {
 		this.removeAll();
 		

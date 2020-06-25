@@ -22,6 +22,12 @@ import java.util.Enumeration;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 
+/**
+ * 
+ * <h1>ListOfSales</h1>
+ * <p>Classe para mostrar as vendas numa tabela.</p>
+ * 
+ */
 public class ListOfSales extends JPanel {
 	private static final long serialVersionUID = 5280176045725860237L;
 	private JTable productsTable;
@@ -30,6 +36,12 @@ public class ListOfSales extends JPanel {
 	public DefaultTableModel dtmTotal;
 	public JTableHeader th;
 
+	/**
+	 * <h1>ListOfSales</h1>
+     * <p>Método para colocar as vendas numa lista</p>
+	 * @param x
+	 * @param y
+	 */
 	public ListOfSales(int x, int y) {
 		
 		setLayout(new BorderLayout(0, 0));
@@ -69,6 +81,12 @@ public class ListOfSales extends JPanel {
 		loadSales();
 	}
 	
+	/**
+	 * 
+	 * <h1>loadSales</h1>
+     * <p>Método para carregar as vendas com os respetivos valores de venda com e sem imposto</p>
+     * 
+	 */
 	public void loadSales() {		
 		dtm.setRowCount(0);
 		if(Engine.currentSale == null) {
@@ -93,6 +111,12 @@ public class ListOfSales extends JPanel {
 		dtmTotal.addRow(new Object[] {"Total c/ IVA", String.valueOf(new DecimalFormat("####0.00").format(getTotal() * 1.23))});
 	}
 
+	/**
+	 * 
+	 * <h1>getTotal</h1>
+     * <p>Método para calcular soma das vendas</p>
+	 * @return valor total da venda
+	 */
 	public Double getTotal() {
 		Double result = 0.0;
 		
