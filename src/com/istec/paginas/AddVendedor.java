@@ -18,7 +18,6 @@ import com.istec.componentes.Placeholdertextfield;
 import com.istec.objectos.Engine;
 import com.istec.objectos.User;
 import com.istec.objectos.Vendedor;
-import com.istec.componentes.ChooseFile;
 import com.istec.componentes.ListOfVendedoresPanel;
 import com.istec.componentes.Placeholderpasswordfield;
 import javax.swing.JButton;
